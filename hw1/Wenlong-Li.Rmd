@@ -1,0 +1,89 @@
+---
+title: "CS 422"
+output: 
+  html_notebook:
+    toc: yes
+    toc_float: yes
+author: Wenlong Li
+---
+
+### Part 2.1-A
+
+```{r}
+library("dplyr")
+setwd("/Users/ilong/Desktop/cs422\ hw/hw1/")
+df = read.csv('College.csv', sep = ',', row.names = 1, header = T)
+print(df[1:5,c(1,5,8,10)])
+```
+### Part 2.1-B
+```{r}
+private <- filter(df, df$Private == "Yes") %>% nrow()
+public <- filter(df, df$Private == "No") %>% nrow()
+str <- paste0("There are ",private," private colleges, and " ,public," public colleges in the dataset")
+print(str)
+```
+### Part 2.1-C
+```{r}
+newDf = select(df, Private, Apps, Accept, Enroll, PhD, perc.alumni, S.F.Ratio, Grad.Rate)
+print(newDf[1:6,])
+```
+### Part 2.1-D.i
+```{r}
+privateCollege = filter(newDf, df$Private == "Yes")
+hist(privateCollege$PhD, main = "Histogram of Private College PhD", xlab = "Number of PhD", ylab = "Number of schools", density = 10,angle = 45, col = "red",
+border = "blue", labels=T, ylim=c(0,150))
+
+```
+### Part 2.1-D.ii
+```{r}
+publicCollege = filter(newDf, df$Private == "No")
+hist(publicCollege$PhD, main = "Histogram of Private College PhD", xlab = "Number of PhD", ylab = "Number of schools", density = 10,angle = 45, col = "red",
+border = "blue", labels=T, ylim=c(0,90))
+
+```
+### Part 2.1-E.i
+```{r}
+with(newDf,{
+   tmpDf <- newDf[order(Grad.Rate),]
+   print(rownames(tmpDf)[1:5])
+})
+```
+### Part 2.1-E.ii
+```{r}
+with(newDf,{
+   tmpDf <- newDf[order(Grad.Rate, decreasing = TRUE),]
+   print(rownames(tmpDf)[1:5])
+})
+```
+### Part 2.1-F.i
+```{r}
+library('psych')
+select(newDf,PhD, S.F.Ratio, Grad.Rate) %>% pairs.panels()
+```
+### Part 2.1-F.ii
+#### PhD and Grad.Rate attributes have the highest correlation,this correlation make sense,the higher the level of the teacher, the better the students of the professor will learn, and the higher the graduation rate
+### Part 2.1-F.iii
+#### Grad.Rate and S.F.Ratio exhibit the lowest correlation,this correlation make sense,The smaller the S.F.Ratio, the less students each teacher manages on average, the more teacher resources each student gets, the better students learn, and the higher the graduation rate.
+### Part 2.1-G
+```{r}
+boxplot(perc.alumni~factor(df$Private), df, xlab = "Private schools", ylab = "Number of perc.alumni")
+```
+##### Private school alumni donate more to their universities
+
+### Part 2.1-H.iii
+```{r}
+plot(ecdf(df$Expend))
+grid(nx=26,ny=10)
+```
+
+### Part 2.1-H.i
+#### the median expenditure per student is 9660.171
+### Part 2.1-H.ii
+#### 80% of the students pay less than 13333 dollars 
+
+
+
+
+
+
+
