@@ -11,7 +11,7 @@ author: Wenlong Li
 
 ```{r}
 library("dplyr")
-setwd("/Users/ilong/Desktop/cs422\ hw/hw1/")
+#setwd("/Users/ilong/Desktop/cs422\ hw/hw1/")
 df = read.csv('College.csv', sep = ',', row.names = 1, header = T)
 print(df[1:5,c(1,5,8,10)])
 ```
@@ -77,7 +77,7 @@ grid(nx=26,ny=10)
 ```
 
 ### Part 2.1-H.i
-#### the median expenditure per student is 9660.171
+#### the median expenditure per student is 9660.17
 ### Part 2.1-H.ii
 #### 80% of the students pay less than 13333 dollars 
 
