@@ -11,7 +11,7 @@ author: Wenlong Li
 
 ```{r}
 library("dplyr")
-#setwd("/Users/ilong/Desktop/cs422\ hw/hw1/")
+setwd("./")
 df = read.csv('College.csv', sep = ',', row.names = 1, header = T)
 print(df[1:5,c(1,5,8,10)])
 ```
