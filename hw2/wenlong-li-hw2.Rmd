@@ -1,0 +1,60 @@
+---
+title: "CS 422"
+output: 
+  html_notebook:
+    toc: yes
+    toc_float: yes
+author: Wenlong Li
+---
+
+### Part 2.1-A
+
+```{r}
+options(digits=2)
+setwd("./")
+df = read.csv('us-covid-deaths.csv', sep = ',', header = T)
+df = df[complete.cases(df),]
+top6DF = df[1:6,]
+print(top6DF)
+```
+### Part 2.1-B
+```{r}
+library('psych')
+pairs.panels(df)
+```
+### Part 2.1-B.i
+#### The highest positive correlation with total_tests, the correlation coefficient is 0.99
+### Part 2.1-B.ii
+####  the highest negative correlation with stringency_index, the correlation coefficient is -0.66
+### Part 2.1-B.iii
+#### 1.The higher the stringency_index, the lower the scope of the virus infection, and the lower the total_deaths will be
+#### 2.The more total_tests, the more deaths will be found, and the higher total_deaths will be
+
+### Part 2.1-C
+```{r}
+model <- lm(formula = total_deaths ~ ., data = select(df, -date))
+summary(model)
+```
+### Part 2.1-D
+#### this a good linear regression model.  F-statistic > 1, at least one of the predictors is useful in predicting the response. R-squared is relatively large, indicating that the model fits better.
+
+### Part 2.1-E
+#### icu_patients, total_tests, reproduction_rate, stringency_index, positive_rate
+
+### Part 2.1-F
+#### hosp_patients, The p-value for hosp_patients appears to imply that there may not be a relationship between hosp_patients and total_deaths
+
+### Part 2.1-G
+```{r}
+model <- lm(formula = total_deaths ~ ., data = select(df, -date, -total_tests))
+summary(model)
+```
+
+
+
+
+
+
+
+
+
