@@ -50,6 +50,7 @@ summary(model)
 model <- lm(formula = total_deaths ~ ., data = select(df, -date, -total_tests))
 summary(model)
 ```
+#### The fit of the (g) function is much worse than the fit of the (c) function.
 
 
 
