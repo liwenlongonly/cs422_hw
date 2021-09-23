@@ -7,49 +7,45 @@ output:
 author: Wenlong Li
 ---
 
-### Part 2.1-a
-
+### Part 2.1
 ```{r}
+library("ISLR")
 options(digits=2)
 setwd("./")
-df = read.csv('us-covid-deaths.csv', sep = ',', header = T)
-df = df[complete.cases(df),]
-top6DF = df[1:6,]
-print(top6DF)
+set.seed(1122)
+index <- sample(1:nrow(Auto), 0.95*dim(Auto)[1])
+train.df <- Auto[index,]
+test.df <- Auto[-index,]
+print(test.df)
 ```
-### Part 2.1-B
-```{r}
-library('psych')
-pairs.panels(df)
-```
-### Part 2.1-B.i
-#### The highest positive correlation with total_tests, the correlation coefficient is 0.99
-### Part 2.1-B.ii
-####  the highest negative correlation with stringency_index, the correlation coefficient is -0.66
-### Part 2.1-B.iii
-#### 1.The higher the stringency_index, the lower the scope of the virus infection, and the lower the total_deaths will be
-#### 2.The more total_tests, the more deaths will be found, and the higher total_deaths will be
+### Part 2.1-a
+### Part 2.1-a-i
+#### name is a string type and cannot be used directly, and name and mpg are basically irrelevant
+### Part 2.1-a-ii
 
-### Part 2.1-C
 ```{r}
-library("dplyr")
-model <- lm(formula = total_deaths ~ ., data = select(df, -date))
+library(dplyr)
+library(modelr)
+model <- lm(mpg = ~ ., data = select(train.df, -name))
 summary(model)
+rmse = rmse(model = model, data = select(train.df, -name))
+str <- paste0("R-squared: 0.817 ","RSE: 3.4 ","RMSE: ",round(rmse, digits = 2))
+print(str)
 ```
-### Part 2.1-D
-#### this a good linear regression model.  F-statistic > 1, at least one of the predictors is useful in predicting the response. R-squared is relatively large, indicating that the model fits better.
-
-### Part 2.1-E
-#### icu_patients, total_tests, reproduction_rate, stringency_index, positive_rate
-
-### Part 2.1-F
-#### hosp_patients, The p-value for hosp_patients appears to imply that there may not be a relationship between hosp_patients and total_deaths
-
-### Part 2.1-G
+#### R2 = 0.817,RSE = 3.4,RMSE = 3.33, There is still a certain distance from the data fitting degree to perfection.
+### Part 2.1-a-iii
 ```{r}
-model <- lm(formula = total_deaths ~ ., data = select(df, -date, -total_tests))
-summary(model)
+plot(model, 1)
 ```
+### Part 2.1-a-iv
+```{r}
+hist(model$residuals, main = "Advertising Residual Histogram", xlab = "Model Residuals", density = 10, angle = 45, col = "red",
+border = "blue", labels=T,  ylim=c(0,100))
+```
+#### the histogram follow a Gaussian distribution,Looks reasonably good as residuals appear homosceadastic and clustered around 0. (Though they don’t appear to be normally distributed.)
+
+### Part 2.1-b
+
 
 
 
