@@ -10,7 +10,6 @@ author: Wenlong Li
 ### Part 2.1
 ```{r}
 library("ISLR")
-options(digits=2)
 setwd("./")
 set.seed(1122)
 index <- sample(1:nrow(Auto), 0.95*dim(Auto)[1])
@@ -79,8 +78,8 @@ border = "blue", labels=T,  ylim=c(0,110))
 
 ### Part 2.1-c
 ```{r}
-res <- predict(new.model, newdata=test.df, interval = "confidence", level = 0.95)
-new.df = data.frame(res, test.df$mpg)
+confidence.res <- predict(new.model, newdata=test.df, interval = "confidence", level = 0.95)
+new.df = data.frame(confidence.res, test.df$mpg)
 ```
 ### Part 2.1-d
 ```{r}
@@ -103,23 +102,23 @@ print(str)
 ```
 ### Part 2.1-e
 ```{r}
-res <- predict(new.model, newdata=test.df, interval = "prediction", level = 0.95)
-new.df = data.frame(res, test.df$mpg)
-names(new.df)[names(new.df) == 'fit'] <- 'Prediction'
-names(new.df)[names(new.df) == 'test.df.mpg'] <- 'Response'
-names(new.df)[names(new.df) == 'lwr'] <- 'Lower'
-names(new.df)[names(new.df) == 'upr'] <- 'Upper'
-new.df["Matches"] = 0
+prediction.res <- predict(new.model, newdata=test.df, interval = "prediction", level = 0.95)
+new.prediction.df = data.frame(prediction.res, test.df$mpg)
+names(new.prediction.df)[names(new.prediction.df) == 'fit'] <- 'Prediction'
+names(new.prediction.df)[names(new.prediction.df) == 'test.df.mpg'] <- 'Response'
+names(new.prediction.df)[names(new.prediction.df) == 'lwr'] <- 'Lower'
+names(new.prediction.df)[names(new.prediction.df) == 'upr'] <- 'Upper'
+new.prediction.df["Matches"] = 0
 
-ret <- apply(new.df, 1, function(x){
+ret <- apply(new.prediction.df, 1, function(x){
   if(x["Response"] >= x["Lower"] && x["Response"] <= x["Upper"]){
     x["Matches"] <- 1
   }
   x["Matches"]
 })
-new.df["Matches"] = ret
-print(new.df)
-str <- paste0("Total observations correctly predicted:", filter(new.df, new.df$Matches == 1) %>% nrow())
+new.prediction.df["Matches"] = ret
+print(new.prediction.df)
+str <- paste0("Total observations correctly predicted:", filter(new.df, new.prediction.df$Matches == 1) %>% nrow())
 print(str)
 ```
 
