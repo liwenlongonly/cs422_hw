@@ -80,24 +80,48 @@ border = "blue", labels=T,  ylim=c(0,110))
 ### Part 2.1-c
 ```{r}
 res <- predict(new.model, newdata=test.df, interval = "confidence", level = 0.95)
-new.df = data.frame(res[,1:1], test.df$mpg)
-names(new.df)[names(new.df) == 'res...1.1.'] <- 'Prediction'
-names(new.df)[names(new.df) == 'test.df.mpg'] <- 'Response'
-print(new.df)
+new.df = data.frame(res, test.df$mpg)
 ```
 ### Part 2.1-d
 ```{r}
+names(new.df)[names(new.df) == 'fit'] <- 'Prediction'
+names(new.df)[names(new.df) == 'test.df.mpg'] <- 'Response'
+names(new.df)[names(new.df) == 'lwr'] <- 'Lower'
+names(new.df)[names(new.df) == 'upr'] <- 'Upper'
 new.df["Matches"] = 0
-i <- 0
+
 ret <- apply(new.df, 1, function(x){
-  print(i)
-  i++
-  print(round(x, digits = 2))
+  if(x["Response"] >= x["Lower"] && x["Response"] <= x["Upper"]){
+    x["Matches"] <- 1
+  }
+  x["Matches"]
 })
-
-print(t(ret))
+new.df["Matches"] = ret
+print(new.df)
+str <- paste0("Total observations correctly predicted:", filter(new.df, new.df$Matches == 1) %>% nrow())
+print(str)
 ```
+### Part 2.1-e
+```{r}
+res <- predict(new.model, newdata=test.df, interval = "prediction", level = 0.95)
+new.df = data.frame(res, test.df$mpg)
+names(new.df)[names(new.df) == 'fit'] <- 'Prediction'
+names(new.df)[names(new.df) == 'test.df.mpg'] <- 'Response'
+names(new.df)[names(new.df) == 'lwr'] <- 'Lower'
+names(new.df)[names(new.df) == 'upr'] <- 'Upper'
+new.df["Matches"] = 0
 
+ret <- apply(new.df, 1, function(x){
+  if(x["Response"] >= x["Lower"] && x["Response"] <= x["Upper"]){
+    x["Matches"] <- 1
+  }
+  x["Matches"]
+})
+new.df["Matches"] = ret
+print(new.df)
+str <- paste0("Total observations correctly predicted:", filter(new.df, new.df$Matches == 1) %>% nrow())
+print(str)
+```
 
 
 
