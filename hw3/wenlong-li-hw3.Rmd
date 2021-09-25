@@ -15,7 +15,6 @@ set.seed(1122)
 index <- sample(1:nrow(Auto), 0.95*dim(Auto)[1])
 train.df <- Auto[index,]
 test.df <- Auto[-index,]
-print(test.df)
 ```
 ### Part 2.1-a
 ### Part 2.1-a-i
@@ -96,8 +95,10 @@ ret <- apply(new.df, 1, function(x){
   x["Matches"]
 })
 new.df["Matches"] = ret
+order = c("Prediction","Response","Lower","Upper","Matches")
+new.df = new.df[order]
 print(new.df)
-str <- paste0("Total observations correctly predicted:", filter(new.df, new.df$Matches == 1) %>% nrow())
+str <- paste0("Total observations correctly predicted:",nrow(filter(new.df, new.df$Matches == 1)))
 print(str)
 ```
 ### Part 2.1-e
@@ -117,10 +118,16 @@ ret <- apply(new.prediction.df, 1, function(x){
   x["Matches"]
 })
 new.prediction.df["Matches"] = ret
+order = c("Prediction","Response","Lower","Upper","Matches")
+new.prediction.df = new.prediction.df[order]
 print(new.prediction.df)
 str <- paste0("Total observations correctly predicted:", filter(new.df, new.prediction.df$Matches == 1) %>% nrow())
 print(str)
 ```
-
+### Part 2.1-f
+### Part 2.1-f-i
+#### (e) results in more matches
+### Part 2.1-f-ii
+#### The prediction interval is much larger than the confidence interval，(e) results in more matches.
 
 
