@@ -1,0 +1,133 @@
+---
+title: "CS 422"
+output: 
+  html_notebook:
+    toc: yes
+    toc_float: yes
+author: Wenlong Li
+---
+
+### Part 2.1
+```{r}
+library("ISLR")
+setwd("./")
+set.seed(1122)
+index <- sample(1:nrow(Auto), 0.95*dim(Auto)[1])
+train.df <- Auto[index,]
+test.df <- Auto[-index,]
+```
+### Part 2.1-a
+### Part 2.1-a-i
+#### name is a string type and cannot be used directly, and name and mpg are basically irrelevant
+### Part 2.1-a-ii
+
+```{r}
+library(dplyr)
+library(modelr)
+data <- select(train.df, -name)
+model <- lm(mpg = ~ ., data = data)
+summary(model)
+rmse = rmse(model = model, data = data)
+str <- paste0("R-squared: 0.817 ","RSE: 3.4 ","RMSE: ",round(rmse, digits = 2))
+print(str)
+```
+#### R2 = 0.817,RSE = 3.4,RMSE = 3.33, There is still a certain distance from the data fitting degree to perfection.
+### Part 2.1-a-iii
+```{r}
+plot(model, 1)
+```
+### Part 2.1-a-iv
+```{r}
+hist(model$residuals, main = "Advertising Residual Histogram", xlab = "Model Residuals", density = 10, angle = 45, col = "red",
+border = "blue", labels=T,  ylim=c(0,100))
+```
+#### the histogram follow a Gaussian distribution,Looks reasonably good as residuals appear homosceadastic and clustered around 0. (Though they don’t appear to be normally distributed.)
+
+### Part 2.1-b
+### Part 2.1-b-i
+#### weight year and origin are statistically significant,cylinders displacement horsepower and acceleration are not statistically significant
+
+```{r}
+library(dplyr)
+library(modelr)
+new.data <- select(train.df, mpg, weight, year, origin)
+new.model <- lm(mpg = ~ ., data = new.data)
+```
+### Part 2.1-b-ii
+```{r}
+summary(new.model)
+rmse = rmse(model = new.model, data = new.data)
+str <- paste0("R-squared: 0.813 ","RSE: 3.4 ","RMSE: ",round(rmse, digits = 2))
+print(str)
+```
+### Part 2.1-b-iii
+```{r}
+plot(new.model, 1)
+```
+
+### Part 2.1-b-iv
+```{r}
+hist(new.model$residuals, main = "Advertising Residual Histogram", xlab = "Model Residuals", density = 10, angle = 45, col = "red",
+border = "blue", labels=T,  ylim=c(0,110))
+```
+#### the histogram follow a Gaussian distribution,Looks reasonably good as residuals appear homosceadastic and clustered around 0. (Though they don’t appear to be normally distributed.)
+
+### Part 2.1-b-v
+#### The two models are basically the same, because the statistically insignificant predictors are removed, and the final effect of the model is not much affected.
+
+### Part 2.1-c
+```{r}
+confidence.res <- predict(new.model, newdata=test.df, interval = "confidence", level = 0.95)
+new.df = data.frame(confidence.res, test.df$mpg)
+```
+### Part 2.1-d
+```{r}
+names(new.df)[names(new.df) == 'fit'] <- 'Prediction'
+names(new.df)[names(new.df) == 'test.df.mpg'] <- 'Response'
+names(new.df)[names(new.df) == 'lwr'] <- 'Lower'
+names(new.df)[names(new.df) == 'upr'] <- 'Upper'
+new.df["Matches"] = 0
+
+ret <- apply(new.df, 1, function(x){
+  if(x["Response"] >= x["Lower"] && x["Response"] <= x["Upper"]){
+    x["Matches"] <- 1
+  }
+  x["Matches"]
+})
+new.df["Matches"] = ret
+order = c("Prediction","Response","Lower","Upper","Matches")
+new.df = new.df[order]
+print(new.df)
+str <- paste0("Total observations correctly predicted:",nrow(filter(new.df, new.df$Matches == 1)))
+print(str)
+```
+### Part 2.1-e
+```{r}
+prediction.res <- predict(new.model, newdata=test.df, interval = "prediction", level = 0.95)
+new.prediction.df = data.frame(prediction.res, test.df$mpg)
+names(new.prediction.df)[names(new.prediction.df) == 'fit'] <- 'Prediction'
+names(new.prediction.df)[names(new.prediction.df) == 'test.df.mpg'] <- 'Response'
+names(new.prediction.df)[names(new.prediction.df) == 'lwr'] <- 'Lower'
+names(new.prediction.df)[names(new.prediction.df) == 'upr'] <- 'Upper'
+new.prediction.df["Matches"] = 0
+
+ret <- apply(new.prediction.df, 1, function(x){
+  if(x["Response"] >= x["Lower"] && x["Response"] <= x["Upper"]){
+    x["Matches"] <- 1
+  }
+  x["Matches"]
+})
+new.prediction.df["Matches"] = ret
+order = c("Prediction","Response","Lower","Upper","Matches")
+new.prediction.df = new.prediction.df[order]
+print(new.prediction.df)
+str <- paste0("Total observations correctly predicted:", filter(new.df, new.prediction.df$Matches == 1) %>% nrow())
+print(str)
+```
+### Part 2.1-f
+### Part 2.1-f-i
+#### (e) results in more matches
+### Part 2.1-f-ii
+#### The prediction interval is much larger than the confidence interval，(e) results in more matches.
+
+
