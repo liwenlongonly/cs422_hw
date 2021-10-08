@@ -1,0 +1,40 @@
+---
+title: "CS 422"
+output: 
+  html_notebook:
+    toc: yes
+    toc_float: yes
+author: Wenlong Li
+---
+
+### Part 1.1
+```{r}
+library(rpart)
+library(rpart.plot)
+setwd("./")
+df <- iris
+model <- rpart(Species ~ ., data = df)
+rpart.plot(model, extra=104, fallen.leaves=T, type=4, main="Iris Dataset Decision Tree")
+```
+### Part 1.1-a
+#### There are 3 levels
+
+### Part 1.1-b
+#### Level 1, Vertex 1: Default class label is setosa
+#### Level 2, Vertex 1: Default class label is setosa
+#### Level 2, Vertex 2: Default class label is versicolor
+#### Level 3, Vertex 1: Default class label is versicolor
+#### Level 3, Vertex 2: Default class label is virgunica
+
+### Part 1.1-c
+#### Level 1, split on attribute: Petal.Length. Split points: < 2.5 left subtree, >= 2.5 right subtree
+
+#### Level 2, split on attribute: Petal.Width. Split points: < 1.8 left subtree, >= 1.8 right subtree
+
+### Part 1.1-d-i
+#### Indicates the probability that the current node belongs to three categories
+
+### Part 1.1-d-ii
+#### The proportion of the number of data classified by the current node
+
+
