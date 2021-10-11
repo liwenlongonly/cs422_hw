@@ -7,34 +7,29 @@ output:
 author: Wenlong Li
 ---
 
-### Part 1.1
+### Part 2.1-a
 ```{r}
-library(rpart)
-library(rpart.plot)
+library("dplyr")
 setwd("./")
-df <- iris
-model <- rpart(Species ~ ., data = df)
-rpart.plot(model, extra=104, fallen.leaves=T, type=4, main="Iris Dataset Decision Tree")
+df <- read.csv("hotel_bookings.csv", sep = ',',header = T)
+print(df)
+df %>% group_by(hotel) %>% summarise(count = n())
+
 ```
-### Part 1.1-a
-#### There are 3 levels
-
-### Part 1.1-b
-#### Level 1, Vertex 1: Default class label is setosa
-#### Level 2, Vertex 1: Default class label is setosa
-#### Level 2, Vertex 2: Default class label is versicolor
-#### Level 3, Vertex 1: Default class label is versicolor
-#### Level 3, Vertex 2: Default class label is virgunica
-
-### Part 1.1-c
-#### Level 1, split on attribute: Petal.Length. Split points: < 2.5 left subtree, >= 2.5 right subtree
-
-#### Level 2, split on attribute: Petal.Width. Split points: < 1.8 left subtree, >= 1.8 right subtree
-
-### Part 1.1-d-i
-#### Indicates the probability that the current node belongs to three categories
-
-### Part 1.1-d-ii
-#### The proportion of the number of data classified by the current node
-
+### Part 2.1-b
+```{r}
+canceled.num <- filter(df, df$is_canceled == 1) %>% nrow()
+not.canceled.num <- filter(df, df$is_canceled == 0) %>% nrow()
+print(paste0("Number of guests who canceled reservation: ",canceled.num))
+print(paste0("Number of guests who did not cancel the reservation: ",not.canceled.num))
+```
+### Part 2.1-c
+```{r}
+table <- filter(df, df$is_canceled == 0) %>% group_by(customer_type) %>% summarise(count = n())
+print(table)
+index <- which.max(unlist(table["count"]))
+ret <- table[index,]
+str <- paste("Customer type with the most reservations is",ret["customer_type"], ", with" ,ret["count"],"reservations")
+print(str)
+```
 
