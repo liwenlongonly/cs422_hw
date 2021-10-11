@@ -351,19 +351,9 @@ print(paste0(&quot;Number of guests who canceled reservation: &quot;,canceled.nu
 <h3>Part 2.1-c</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGFibGUgPC0gZmlsdGVyKGRmLCBkZiRpc19jYW5jZWxlZCA9PSAwKSAlPiUgZ3JvdXBfYnkoY3VzdG9tZXJfdHlwZSkgJT4lIHN1bW1hcmlzZShjb3VudCA9IG4oKSlcbnByaW50KHRhYmxlKVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGFibGUgPC0gZmlsdGVyKGRmLCBkZiRpc19jYW5jZWxlZCA9PSAwKSAlPiUgZ3JvdXBfYnkoY3VzdG9tZXJfdHlwZSkgJT4lIHN1bW1hcmlzZShjb3VudCA9IG4oKSlcbmluZGV4IDwtIHdoaWNoLm1heCh1bmxpc3QodGFibGVbXCJjb3VudFwiXSkpXG5yZXQgPC0gdGFibGVbaW5kZXgsXVxuc3RyIDwtIHBhc3RlKFwiQ3VzdG9tZXIgdHlwZSB3aXRoIHRoZSBtb3N0IHJlc2VydmF0aW9ucyBpc1wiLHJldFtcImN1c3RvbWVyX3R5cGVcIl0sIFwiLCB3aXRoXCIgLHJldFtcImNvdW50XCJdLFwicmVzZXJ2YXRpb25zXCIpXG5wcmludChzdHIpXG5gYGAifQ== -->
 <pre class="r"><code>table &lt;- filter(df, df$is_canceled == 0) %&gt;% group_by(customer_type) %&gt;% summarise(count = n())
-print(table)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NCwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI0IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBMTFRMFVyRE1CUzl6WnJOQnVvRXY2UDFRUkRmRmNVM2tRbDdreXlMV3RZbEpVM1J2Zm1IL3BDMDNuUkowUlRhM0hQdVBlZjA1dWwyZmNuV0RBQm1rQ1lKekNpV1FKOVhkOFUxUUVvUUpKQkM1czVQSERySHdwRm4rS2ErY1hLamxUVmNXSS9wdmRGZDQwRzJNbHkxbFZTaHU1eUk0cEViZTBBcUg4MkE5ZWc5Qi9qZUFUeGNST2xVOGIxc2ZUTHhaQzY2MXVxOU5DLzIwTWd3S1hTSGFmL2xtZEVmWmJCd2VlUUxQOE13L01RNW91WnR5QWtrMjNMTHkxZURla1I5SkZub3hsWmFvWWk0NjZHUk9ERVJzZXlVKzVOdElkNDd0U3V1WE1EWVBqNjVyOU0vTlRsR2tzRmJVVzgxbCtxdFV0UG1OZC9JMm9OVDNIaGN1R3hNTmQwK1E3WXRyYlk4ekRHaDY4Q011MEgvQ3lOSS9Xd1ZBZ0FBIn0= -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["customer_type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["count"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Contract","2":"2814"},{"1":"Group","2":"518"},{"1":"Transient","2":"53099"},{"1":"Transient-Party","2":"18735"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[4]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5kZXggPC0gd2hpY2gubWF4KHVubGlzdCh0YWJsZVtcImNvdW50XCJdKSlcbnJldCA8LSB0YWJsZVtpbmRleCxdXG5zdHIgPC0gcGFzdGUoXCJDdXN0b21lciB0eXBlIHdpdGggdGhlIG1vc3QgcmVzZXJ2YXRpb25zIGlzXCIscmV0W1wiY3VzdG9tZXJfdHlwZVwiXSwgXCIsIHdpdGhcIiAscmV0W1wiY291bnRcIl0sXCJyZXNlcnZhdGlvbnNcIilcbnByaW50KHN0cilcbmBgYCJ9 -->
-<pre class="r"><code>index &lt;- which.max(unlist(table[&quot;count&quot;]))
+index &lt;- which.max(unlist(table[&quot;count&quot;]))
 ret &lt;- table[index,]
 str &lt;- paste(&quot;Customer type with the most reservations is&quot;,ret[&quot;customer_type&quot;], &quot;, with&quot; ,ret[&quot;count&quot;],&quot;reservations&quot;)
 print(str)</code></pre>
@@ -373,10 +363,46 @@ print(str)</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+</div>
+<div id="part-2.1-d" class="section level3">
+<h3>Part 2.1-d</h3>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShcImRwbHlyXCIpXG5yZXQgPC0gZmlsdGVyKGRmLCBkZiRpc19jYW5jZWxlZCA9PSAwKSAlPiUgc2VsZWN0KHJlcXVpcmVkX2Nhcl9wYXJraW5nX3NwYWNlcykgJT4lIGNvbFN1bXMobmEucm0gPSBUUlVFKVxucGFya2luZy5udW0gPSByZXRbXCJyZXF1aXJlZF9jYXJfcGFya2luZ19zcGFjZXNcIl1cbnN0ciA8LSBwYXN0ZShub3QuY2FuY2VsZWQubnVtLFwiY3VzdG9tZXJzIHJlcXVpcmVkIHRoZSBtb3N0IG51bWJlciBvZiBwYXJraW5nIHNwYWNlc1wiLHBhcmtpbmcubnVtKVxucHJpbnQoc3RyKVxuYGBgIn0= -->
+<pre class="r"><code>library(&quot;dplyr&quot;)
+ret &lt;- filter(df, df$is_canceled == 0) %&gt;% select(required_car_parking_spaces) %&gt;% colSums(na.rm = TRUE)
+parking.num = ret[&quot;required_car_parking_spaces&quot;]
+str &lt;- paste(not.canceled.num,&quot;customers required the most number of parking spaces&quot;,parking.num)
+print(str)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiNzUxNjYgY3VzdG9tZXJzIHJlcXVpcmVkIHRoZSBtb3N0IG51bWJlciBvZiBwYXJraW5nIHNwYWNlcyA3NDY0XCJcbiJ9 -->
+<pre><code>[1] &quot;75166 customers required the most number of parking spaces 7464&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="part-2.1-e" class="section level3">
+<h3>Part 2.1-e</h3>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShcImRwbHlyXCIpXG5yZXBlYXQucGFya2luZyA8LSBmaWx0ZXIoZGYsIGRmJGlzX2NhbmNlbGVkID09IDAsIGRmJHJlcXVpcmVkX2Nhcl9wYXJraW5nX3NwYWNlcz4wKSAlPiUgc2VsZWN0KHByZXZpb3VzX2Jvb2tpbmdzX25vdF9jYW5jZWxlZCkgJT4lIGNvbFN1bXMobmEucm0gPSBUUlVFKVxuXG5yZXBlYXQuYWxsIDwtIGZpbHRlcihkZiwgZGYkaXNfY2FuY2VsZWQgPT0gMCkgJT4lIHNlbGVjdChwcmV2aW91c19ib29raW5nc19ub3RfY2FuY2VsZWQpICU+JSBjb2xTdW1zKG5hLnJtID0gVFJVRSlcblxuc3RyIDwtIHBhc3RlKG5vdC5jYW5jZWxlZC5udW0tcmVwZWF0LmFsbFtcInByZXZpb3VzX2Jvb2tpbmdzX25vdF9jYW5jZWxlZFwiXSxcImN1c3RvbWVycyByZXF1aXJlZCB0aGUgbGVhc3QgbnVtYmVyIG9mIHBhcmtpbmcgc3BhY2VzXCIscGFya2luZy5udW0tcmVwZWF0LnBhcmtpbmdbXCJwcmV2aW91c19ib29raW5nc19ub3RfY2FuY2VsZWRcIl0pXG5wcmludChzdHIpXG5gYGAifQ== -->
+<pre class="r"><code>library(&quot;dplyr&quot;)
+repeat.parking &lt;- filter(df, df$is_canceled == 0, df$required_car_parking_spaces&gt;0) %&gt;% select(previous_bookings_not_canceled) %&gt;% colSums(na.rm = TRUE)
+
+repeat.all &lt;- filter(df, df$is_canceled == 0) %&gt;% select(previous_bookings_not_canceled) %&gt;% colSums(na.rm = TRUE)
+
+str &lt;- paste(not.canceled.num-repeat.all[&quot;previous_bookings_not_canceled&quot;],&quot;customers required the least number of parking spaces&quot;,parking.num-repeat.parking[&quot;previous_bookings_not_canceled&quot;])
+print(str)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiNTk5MDkgY3VzdG9tZXJzIHJlcXVpcmVkIHRoZSBsZWFzdCBudW1iZXIgb2YgcGFya2luZyBzcGFjZXMgNDM4MVwiXG4ifQ== -->
+<pre><code>[1] &quot;59909 customers required the least number of parking spaces 4381&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQ1MgNDIyIgpvdXRwdXQ6IAogIGh0bWxfbm90ZWJvb2s6CiAgICB0b2M6IHllcwogICAgdG9jX2Zsb2F0OiB5ZXMKYXV0aG9yOiBXZW5sb25nIExpCi0tLQoKIyMjIFBhcnQgMi4xLWEKYGBge3J9CmxpYnJhcnkoImRwbHlyIikKc2V0d2QoIi4vIikKZGYgPC0gcmVhZC5jc3YoImhvdGVsX2Jvb2tpbmdzLmNzdiIsIHNlcCA9ICcsJyxoZWFkZXIgPSBUKQpwcmludChkZikKZGYgJT4lIGdyb3VwX2J5KGhvdGVsKSAlPiUgc3VtbWFyaXNlKGNvdW50ID0gbigpKQoKYGBgCiMjIyBQYXJ0IDIuMS1iCmBgYHtyfQpjYW5jZWxlZC5udW0gPC0gZmlsdGVyKGRmLCBkZiRpc19jYW5jZWxlZCA9PSAxKSAlPiUgbnJvdygpCm5vdC5jYW5jZWxlZC5udW0gPC0gZmlsdGVyKGRmLCBkZiRpc19jYW5jZWxlZCA9PSAwKSAlPiUgbnJvdygpCnByaW50KHBhc3RlMCgiTnVtYmVyIG9mIGd1ZXN0cyB3aG8gY2FuY2VsZWQgcmVzZXJ2YXRpb246ICIsY2FuY2VsZWQubnVtKSkKcHJpbnQocGFzdGUwKCJOdW1iZXIgb2YgZ3Vlc3RzIHdobyBkaWQgbm90IGNhbmNlbCB0aGUgcmVzZXJ2YXRpb246ICIsbm90LmNhbmNlbGVkLm51bSkpCmBgYAojIyMgUGFydCAyLjEtYwpgYGB7cn0KdGFibGUgPC0gZmlsdGVyKGRmLCBkZiRpc19jYW5jZWxlZCA9PSAwKSAlPiUgZ3JvdXBfYnkoY3VzdG9tZXJfdHlwZSkgJT4lIHN1bW1hcmlzZShjb3VudCA9IG4oKSkKcHJpbnQodGFibGUpCmluZGV4IDwtIHdoaWNoLm1heCh1bmxpc3QodGFibGVbImNvdW50Il0pKQpyZXQgPC0gdGFibGVbaW5kZXgsXQpzdHIgPC0gcGFzdGUoIkN1c3RvbWVyIHR5cGUgd2l0aCB0aGUgbW9zdCByZXNlcnZhdGlvbnMgaXMiLHJldFsiY3VzdG9tZXJfdHlwZSJdLCAiLCB3aXRoIiAscmV0WyJjb3VudCJdLCJyZXNlcnZhdGlvbnMiKQpwcmludChzdHIpCmBgYAoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiQ1MgNDIyIgpvdXRwdXQ6IAogIGh0bWxfbm90ZWJvb2s6CiAgICB0b2M6IHllcwogICAgdG9jX2Zsb2F0OiB5ZXMKYXV0aG9yOiBXZW5sb25nIExpCi0tLQoKIyMjIFBhcnQgMi4xLWEKYGBge3J9CmxpYnJhcnkoImRwbHlyIikKc2V0d2QoIi4vIikKZGYgPC0gcmVhZC5jc3YoImhvdGVsX2Jvb2tpbmdzLmNzdiIsIHNlcCA9ICcsJyxoZWFkZXIgPSBUKQpwcmludChkZikgIyBkZWJ1Z+S9v+eUqApkZiAlPiUgZ3JvdXBfYnkoaG90ZWwpICU+JSBzdW1tYXJpc2UoY291bnQgPSBuKCkpCgpgYGAKIyMjIFBhcnQgMi4xLWIKYGBge3J9CmNhbmNlbGVkLm51bSA8LSBmaWx0ZXIoZGYsIGRmJGlzX2NhbmNlbGVkID09IDEpICU+JSBucm93KCkKbm90LmNhbmNlbGVkLm51bSA8LSBmaWx0ZXIoZGYsIGRmJGlzX2NhbmNlbGVkID09IDApICU+JSBucm93KCkKcHJpbnQocGFzdGUwKCJOdW1iZXIgb2YgZ3Vlc3RzIHdobyBjYW5jZWxlZCByZXNlcnZhdGlvbjogIixjYW5jZWxlZC5udW0pKQpwcmludChwYXN0ZTAoIk51bWJlciBvZiBndWVzdHMgd2hvIGRpZCBub3QgY2FuY2VsIHRoZSByZXNlcnZhdGlvbjogIixub3QuY2FuY2VsZWQubnVtKSkKYGBgCiMjIyBQYXJ0IDIuMS1jCmBgYHtyfQp0YWJsZSA8LSBmaWx0ZXIoZGYsIGRmJGlzX2NhbmNlbGVkID09IDApICU+JSBncm91cF9ieShjdXN0b21lcl90eXBlKSAlPiUgc3VtbWFyaXNlKGNvdW50ID0gbigpKQppbmRleCA8LSB3aGljaC5tYXgodW5saXN0KHRhYmxlWyJjb3VudCJdKSkKcmV0IDwtIHRhYmxlW2luZGV4LF0Kc3RyIDwtIHBhc3RlKCJDdXN0b21lciB0eXBlIHdpdGggdGhlIG1vc3QgcmVzZXJ2YXRpb25zIGlzIixyZXRbImN1c3RvbWVyX3R5cGUiXSwgIiwgd2l0aCIgLHJldFsiY291bnQiXSwicmVzZXJ2YXRpb25zIikKcHJpbnQoc3RyKQpgYGAKIyMjIFBhcnQgMi4xLWQKYGBge3J9CmxpYnJhcnkoImRwbHlyIikKcmV0IDwtIGZpbHRlcihkZiwgZGYkaXNfY2FuY2VsZWQgPT0gMCkgJT4lIHNlbGVjdChyZXF1aXJlZF9jYXJfcGFya2luZ19zcGFjZXMpICU+JSBjb2xTdW1zKG5hLnJtID0gVFJVRSkKcGFya2luZy5udW0gPSByZXRbInJlcXVpcmVkX2Nhcl9wYXJraW5nX3NwYWNlcyJdCnN0ciA8LSBwYXN0ZShub3QuY2FuY2VsZWQubnVtLCJjdXN0b21lcnMgcmVxdWlyZWQgdGhlIG1vc3QgbnVtYmVyIG9mIHBhcmtpbmcgc3BhY2VzIixwYXJraW5nLm51bSkKcHJpbnQoc3RyKQpgYGAKIyMjIFBhcnQgMi4xLWUKYGBge3J9CmxpYnJhcnkoImRwbHlyIikKCnJlcGVhdC5hbGwgPC0gZmlsdGVyKGRmLCBkZiRpc19jYW5jZWxlZCA9PSAwKSAlPiUgc2VsZWN0KHByZXZpb3VzX2Jvb2tpbmdzX25vdF9jYW5jZWxlZCkgJT4lIGNvbFN1bXMobmEucm0gPSBUUlVFKQoKcmVwZWF0LnBhcmtpbmcgPC0gZmlsdGVyKGRmLCBkZiRpc19jYW5jZWxlZCA9PSAwLCBkZiRyZXF1aXJlZF9jYXJfcGFya2luZ19zcGFjZXM+MCkgJT4lIHNlbGVjdChwcmV2aW91c19ib29raW5nc19ub3RfY2FuY2VsZWQpICU+JSBjb2xTdW1zKG5hLnJtID0gVFJVRSkKCnN0ciA8LSBwYXN0ZShub3QuY2FuY2VsZWQubnVtLXJlcGVhdC5hbGxbInByZXZpb3VzX2Jvb2tpbmdzX25vdF9jYW5jZWxlZCJdLCJjdXN0b21lcnMgcmVxdWlyZWQgdGhlIGxlYXN0IG51bWJlciBvZiBwYXJraW5nIHNwYWNlcyIscGFya2luZy5udW0tcmVwZWF0LnBhcmtpbmdbInByZXZpb3VzX2Jvb2tpbmdzX25vdF9jYW5jZWxlZCJdKQpwcmludChzdHIpCmBgYAoKCg==</div>
 
 
 </div>

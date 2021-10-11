@@ -12,7 +12,7 @@ author: Wenlong Li
 library("dplyr")
 setwd("./")
 df <- read.csv("hotel_bookings.csv", sep = ',',header = T)
-print(df)
+print(df) # debug使用
 df %>% group_by(hotel) %>% summarise(count = n())
 
 ```
@@ -26,10 +26,29 @@ print(paste0("Number of guests who did not cancel the reservation: ",not.cancele
 ### Part 2.1-c
 ```{r}
 table <- filter(df, df$is_canceled == 0) %>% group_by(customer_type) %>% summarise(count = n())
-print(table)
 index <- which.max(unlist(table["count"]))
 ret <- table[index,]
 str <- paste("Customer type with the most reservations is",ret["customer_type"], ", with" ,ret["count"],"reservations")
 print(str)
 ```
+### Part 2.1-d
+```{r}
+library("dplyr")
+ret <- filter(df, df$is_canceled == 0) %>% select(required_car_parking_spaces) %>% colSums(na.rm = TRUE)
+parking.num = ret["required_car_parking_spaces"]
+str <- paste(not.canceled.num,"customers required the most number of parking spaces",parking.num)
+print(str)
+```
+### Part 2.1-e
+```{r}
+library("dplyr")
+
+repeat.all <- filter(df, df$is_canceled == 0) %>% select(previous_bookings_not_canceled) %>% colSums(na.rm = TRUE)
+
+repeat.parking <- filter(df, df$is_canceled == 0, df$required_car_parking_spaces>0) %>% select(previous_bookings_not_canceled) %>% colSums(na.rm = TRUE)
+
+str <- paste(not.canceled.num-repeat.all["previous_bookings_not_canceled"],"customers required the least number of parking spaces",parking.num-repeat.parking["previous_bookings_not_canceled"])
+print(str)
+```
+
 
