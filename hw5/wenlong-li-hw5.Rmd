@@ -50,5 +50,28 @@ repeat.parking <- filter(df, df$is_canceled == 0, df$required_car_parking_spaces
 str <- paste(not.canceled.num-repeat.all["previous_bookings_not_canceled"],"customers required the least number of parking spaces",parking.num-repeat.parking["previous_bookings_not_canceled"])
 print(str)
 ```
+### Part 2.1-f
+```{r}
+row.num <-filter(df, df$reserved_room_type == df$assigned_room_type) %>% nrow()
+print(row.num)
+ret <-row.num * 100.0/nrow(df)
+print(paste(round(ret,2),"% of the people who expressed a room preference during reservation got the room during check-in."))
+```
+### Part 2.1-g
+```{r}
+h1.df<-filter(df,df$hotel == "City Hotel") %>% group_by(country) %>% summarise(count = n())
+h1.df = h1.df[order(h1.df$count, decreasing=TRUE),]
+barplot(rev(h1.df[0:10,]$count), names.arg = rev(h1.df[0:10,]$country), xlim = c(0, 12), main="Top 10 countries of origin for City Hotel", col =rainbow(10)) 
+
+h2.df<-filter(df,df$hotel == "Resort Hotel") %>% group_by(country) %>% summarise(count = n())
+h2.df = h2.df[order(h2.df$count, decreasing=TRUE),]
+h2.df = h2.df[-10,]
+barplot(rev(h2.df[0:10,]$count), names.arg = rev(h2.df[0:10,]$country), xlim = c(0, 12), main="Top 10 countries of origin for Resort Hotel", col = rainbow(10)) 
+```
+### Part 2.1-h
+```{r}
+
+```
+
 
 
