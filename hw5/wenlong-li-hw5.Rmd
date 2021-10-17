@@ -6,14 +6,12 @@ output:
     toc_float: yes
 author: Wenlong Li
 ---
-
 ### Part 2.1-a
 ```{r}
 library("dplyr")
 setwd("./")
 df <- read.csv("hotel_bookings.csv", sep = ',',header = T)
 df %>% group_by(hotel) %>% summarise(count = n())
-
 ```
 ### Part 2.1-b
 ```{r}
