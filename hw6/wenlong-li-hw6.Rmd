@@ -8,22 +8,39 @@ author: Wenlong Li
 ---
 ### Part 2.1
 ```{r}
+library(caret)
+library(dplyr)
 library(randomForest)
 setwd("./")
 df <- read.csv("hotel_bookings.csv", sep = ',',header = T)
 df$is_canceled <- as.factor(df$is_canceled)
 set.seed(1122)
-index <- sample(1:nrow(df), 0.99*dim(df)[1])
-train.df <- df[-index,]
+index <- sample(1:nrow(df), 0.9*dim(df)[1])
+train.df <- df[-index,] # debug 使用少量测试数据
 test.df <- df[-index,]
 
 train.new.df <- select(train.df, -reservation_status, -country, -agent, -company, -reservation_status_date)
-mtry = floor(sqrt(ncol(train.new.df)))
 
-model <- randomForest(is_canceled ~ ., data=train.new.df, mtry=mtry, na.action = na.omit)
-pred <- predict(model, test.df, type="class")
-confusionMatrix(pred, as.factor(test.df$is_canceled), positive='1')
-print(model)
+result <- matrix(nrow = 0, ncol = 6)
+colnames(result) <- c("oobError","ntree","mtry","balancedAccuracy","specificity","sensitivity");
+
+mtry = floor(sqrt(ncol(train.new.df)))
+ntrees <- c(250, 500, 750)
+mtrys <- c(mtry, mtry+1, mtry+2)
+for(i in ntrees){
+  for(j in mtrys){
+    model <- randomForest(is_canceled ~ ., data=train.new.df,ntree=i, mtry=j, na.action = na.omit)
+    oobError <- mean(model$err.rate)
+    pred <- predict(model, test.df, type="class")
+    cm <- confusionMatrix(pred, as.factor(test.df$is_canceled), positive='1')
+    balancedAccuracy = as.double(cm$byClass["Balanced Accuracy"])
+    specificity = as.double(cm$byClass["Specificity"])
+    sensitivity = as.double(cm$byClass["Sensitivity"])
+    result <- rbind(result, c(oobError, i, j, balancedAccuracy, specificity, sensitivity))
+  }
+}
+print(result)
+
 ```
 ### Part 2.1-i
 ```{r}
