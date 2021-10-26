@@ -1,0 +1,39 @@
+---
+title: "CS 422"
+output: 
+  html_notebook:
+    toc: yes
+    toc_float: yes
+author: Wenlong Li
+---
+### Part 2.1
+```{r}
+library(randomForest)
+setwd("./")
+df <- read.csv("hotel_bookings.csv", sep = ',',header = T)
+df$is_canceled <- as.factor(df$is_canceled)
+set.seed(1122)
+index <- sample(1:nrow(df), 0.99*dim(df)[1])
+train.df <- df[-index,]
+test.df <- df[-index,]
+
+train.new.df <- select(train.df, -reservation_status, -country, -agent, -company, -reservation_status_date)
+mtry = floor(sqrt(ncol(train.new.df)))
+
+model <- randomForest(is_canceled ~ ., data=train.new.df, mtry=mtry, na.action = na.omit)
+pred <- predict(model, test.df, type="class")
+confusionMatrix(pred, as.factor(test.df$is_canceled), positive='1')
+print(model)
+```
+### Part 2.1-i
+```{r}
+
+```
+### Part 2.1-ii
+```{r}
+
+```
+### Part 2.1-iii
+```{r}
+
+```

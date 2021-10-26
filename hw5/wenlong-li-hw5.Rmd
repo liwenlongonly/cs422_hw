@@ -122,6 +122,7 @@ print(paste("the AUC of the ROC curve is:",perf.auc@"y.values"))
 library(caret)
 new.model <- rpart(is_canceled ~ ., data = select(train.df, -reservation_status, -country, -agent, -company, -reservation_status_date), method = "class", control=rpart.control(cp=0.0))
 new.pred <- predict(new.model, test.df, type = "class")
+
 cmx<-confusionMatrix(new.pred, as.factor(test.df$is_canceled), positive='1')
 cat("Before pruning:\n  Accuracy:",round(as.double(cmx$overall["Accuracy"]),3),"\n  Error:",round(1-as.double(cmx$overall["Accuracy"]),3),"\n  Balanced Accuracy:",round(as.double(cmx$byClass["Balanced Accuracy"]),3),"\n  Specificity:",round(as.double(cmx$byClass["Specificity"]),3),"\n  Sensitivity:",round(as.double(cmx$byClass["Sensitivity"]),3),"\n  Precision:",round(as.double(cmx$byClass["Pos Pred Value"]),3))
 ```
