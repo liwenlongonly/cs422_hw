@@ -297,77 +297,104 @@ div.tocify {
 <h3>Part 2.1</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShjYXJldClcbmxpYnJhcnkoZHBseXIpXG5saWJyYXJ5KHJhbmRvbUZvcmVzdClcbnNldHdkKFwiLi9cIilcbmRmIDwtIHJlYWQuY3N2KFwiaG90ZWxfYm9va2luZ3MuY3N2XCIsIHNlcCA9ICcsJyxoZWFkZXIgPSBUKVxuZGYkaXNfY2FuY2VsZWQgPC0gYXMuZmFjdG9yKGRmJGlzX2NhbmNlbGVkKVxuc2V0LnNlZWQoMTEyMilcbmluZGV4IDwtIHNhbXBsZSgxOm5yb3coZGYpLCAwLjkqZGltKGRmKVsxXSlcbnRyYWluLmRmIDwtIGRmWy1pbmRleCxdICMgZGVidWcg5L2/55So5bCR6YeP5rWL6K+V5pWw5o2uXG50ZXN0LmRmIDwtIGRmWy1pbmRleCxdXG5cbnRyYWluLm5ldy5kZiA8LSBzZWxlY3QodHJhaW4uZGYsIC1yZXNlcnZhdGlvbl9zdGF0dXMsIC1jb3VudHJ5LCAtYWdlbnQsIC1jb21wYW55LCAtcmVzZXJ2YXRpb25fc3RhdHVzX2RhdGUpXG5cbnJlc3VsdCA8LSBtYXRyaXgobnJvdyA9IDAsIG5jb2wgPSA2KVxuY29sbmFtZXMocmVzdWx0KSA8LSBjKFwib29iRXJyb3JcIixcIm50cmVlXCIsXCJtdHJ5XCIsXCJiYWxhbmNlZEFjY3VyYWN5XCIsXCJzcGVjaWZpY2l0eVwiLFwic2Vuc2l0aXZpdHlcIik7XG5cbm10cnkgPSBmbG9vcihzcXJ0KG5jb2wodHJhaW4ubmV3LmRmKSkpXG5udHJlZXMgPC0gYygyNTAsIDUwMCwgNzUwKVxubXRyeXMgPC0gYyhtdHJ5LCBtdHJ5KzEsIG10cnkrMilcbmZvcihpIGluIG50cmVlcyl7XG4gIGZvcihqIGluIG10cnlzKXtcbiAgICBtb2RlbCA8LSByYW5kb21Gb3Jlc3QoaXNfY2FuY2VsZWQgfiAuLCBkYXRhPXRyYWluLm5ldy5kZixudHJlZT1pLCBtdHJ5PWosIG5hLmFjdGlvbiA9IG5hLm9taXQpXG4gICAgb29iRXJyb3IgPC0gbWVhbihtb2RlbCRlcnIucmF0ZSlcbiAgICBwcmVkIDwtIHByZWRpY3QobW9kZWwsIHRlc3QuZGYsIHR5cGU9XCJjbGFzc1wiKVxuICAgIGNtIDwtIGNvbmZ1c2lvbk1hdHJpeChwcmVkLCBhcy5mYWN0b3IodGVzdC5kZiRpc19jYW5jZWxlZCksIHBvc2l0aXZlPScxJylcbiAgICBiYWxhbmNlZEFjY3VyYWN5ID0gYXMuZG91YmxlKGNtJGJ5Q2xhc3NbXCJCYWxhbmNlZCBBY2N1cmFjeVwiXSlcbiAgICBzcGVjaWZpY2l0eSA9IGFzLmRvdWJsZShjbSRieUNsYXNzW1wiU3BlY2lmaWNpdHlcIl0pXG4gICAgc2Vuc2l0aXZpdHkgPSBhcy5kb3VibGUoY20kYnlDbGFzc1tcIlNlbnNpdGl2aXR5XCJdKVxuICAgIHJlc3VsdCA8LSByYmluZChyZXN1bHQsIGMob29iRXJyb3IsIGksIGosIGJhbGFuY2VkQWNjdXJhY3ksIHNwZWNpZmljaXR5LCBzZW5zaXRpdml0eSkpXG4gIH1cbn1cbnByaW50KHJlc3VsdClcbmBgYCJ9 -->
-<pre class="r"><code>library(caret)
-library(dplyr)
-library(randomForest)
-setwd(&quot;./&quot;)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShjYXJldClcbmBgYCJ9 -->
+<pre class="r"><code>library(caret)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoi6L295YWl6ZyA6KaB55qE56iL6L6R5YyF77yaZ2dwbG90Mlxu6L295YWl6ZyA6KaB55qE56iL6L6R5YyF77yabGF0dGljZVxuUmVnaXN0ZXJlZCBTMyBtZXRob2Qgb3ZlcndyaXR0ZW4gYnkgJ2RhdGEudGFibGUnOlxuICBtZXRob2QgICAgICAgICAgIGZyb21cbiAgcHJpbnQuZGF0YS50YWJsZSAgICAgXG4ifQ== -->
+<pre><code>载入需要的程辑包：ggplot2
+载入需要的程辑包：lattice
+Registered S3 method overwritten by &#39;data.table&#39;:
+  method           from
+  print.data.table     </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmBgYCJ9 -->
+<pre class="r"><code>library(dplyr)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG7ovb3lhaXnqIvovpHljIXvvJrigJhkcGx5cuKAmVxuXG5UaGUgZm9sbG93aW5nIG9iamVjdHMgYXJlIG1hc2tlZCBmcm9tIOKAmHBhY2thZ2U6c3RhdHPigJk6XG5cbiAgICBmaWx0ZXIsIGxhZ1xuXG5UaGUgZm9sbG93aW5nIG9iamVjdHMgYXJlIG1hc2tlZCBmcm9tIOKAmHBhY2thZ2U6YmFzZeKAmTpcblxuICAgIGludGVyc2VjdCwgc2V0ZGlmZiwgc2V0ZXF1YWwsIHVuaW9uXG4ifQ== -->
+<pre><code>
+载入程辑包：‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShyYW5kb21Gb3Jlc3QpXG5gYGAifQ== -->
+<pre class="r"><code>library(randomForest)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoicmFuZG9tRm9yZXN0IDQuNi0xNFxuVHlwZSByZk5ld3MoKSB0byBzZWUgbmV3IGZlYXR1cmVzL2NoYW5nZXMvYnVnIGZpeGVzLlxuXG7ovb3lhaXnqIvovpHljIXvvJrigJhyYW5kb21Gb3Jlc3TigJlcblxuVGhlIGZvbGxvd2luZyBvYmplY3QgaXMgbWFza2VkIGZyb20g4oCYcGFja2FnZTpkcGx5cuKAmTpcblxuICAgIGNvbWJpbmVcblxuVGhlIGZvbGxvd2luZyBvYmplY3QgaXMgbWFza2VkIGZyb20g4oCYcGFja2FnZTpnZ3Bsb3Qy4oCZOlxuXG4gICAgbWFyZ2luXG4ifQ== -->
+<pre><code>randomForest 4.6-14
+Type rfNews() to see new features/changes/bug fixes.
+
+载入程辑包：‘randomForest’
+
+The following object is masked from ‘package:dplyr’:
+
+    combine
+
+The following object is masked from ‘package:ggplot2’:
+
+    margin</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0d2QoXCIuL1wiKVxuZGYgPC0gcmVhZC5jc3YoXCJob3RlbF9ib29raW5ncy5jc3ZcIiwgc2VwID0gJywnLGhlYWRlciA9IFQpXG5kZiRpc19jYW5jZWxlZCA8LSBhcy5mYWN0b3IoZGYkaXNfY2FuY2VsZWQpXG5zZXQuc2VlZCgxMTIyKVxuaW5kZXggPC0gc2FtcGxlKDE6bnJvdyhkZiksIDAuOSpkaW0oZGYpWzFdKVxudHJhaW4uZGYgPC0gZGZbaW5kZXgsXVxudGVzdC5kZiA8LSBkZlstaW5kZXgsXVxuXG4jdHJhaW4ubmV3LmRmIDwtIHNlbGVjdCh0cmFpbi5kZiwgLXJlc2VydmF0aW9uX3N0YXR1cywgLWNvdW50cnksIC1hZ2VudCwgLWNvbXBhbnksIC1yZXNlcnZhdGlvbl9zdGF0dXNfZGF0ZSlcblxucmVzdWx0IDwtIG1hdHJpeChucm93ID0gMCwgbmNvbCA9IDcpXG5jb2xuYW1lcyhyZXN1bHQpIDwtIGMoXCJudHJlZVwiLFwibXRyeVwiLFwib29iRXJyb3JcIixcIkFjY3VyYWN5XCIsXCJiYWxhbmNlZEFjY3VyYWN5XCIsXCJzcGVjaWZpY2l0eVwiLFwic2Vuc2l0aXZpdHlcIik7XG5cbm10cnkgPSBmbG9vcihzcXJ0KG5jb2wodHJhaW4uZGYpKSlcblxubnRyZWVzIDwtIGMoMjUwLCA1MDAsIDc1MClcbm10cnlzIDwtIGMobXRyeSwgbXRyeSsxLCBtdHJ5KzIpXG5mb3IoaSBpbiBudHJlZXMpe1xuICBmb3IoaiBpbiBtdHJ5cyl7XG4gICAgbW9kZWwgPC0gcmFuZG9tRm9yZXN0KGlzX2NhbmNlbGVkIH4gLiwgZGF0YT10cmFpbi5kZixudHJlZT1pLCBtdHJ5PWosIG5hLmFjdGlvbiA9IG5hLm9taXQpXG4gICAgb29iRXJyb3IgPC0gbWVhbihtb2RlbCRlcnIucmF0ZSlcbiAgICBwcmVkIDwtIHByZWRpY3QobW9kZWwsIHRlc3QuZGYsIHR5cGU9XCJjbGFzc1wiKVxuICAgIGNtIDwtIGNvbmZ1c2lvbk1hdHJpeChwcmVkLCBhcy5mYWN0b3IodGVzdC5kZiRpc19jYW5jZWxlZCksIHBvc2l0aXZlPScxJylcbiAgICBhY2N1cmFjeSA8LSBhcy5kb3VibGUoY20kb3ZlcmFsbFtcIkFjY3VyYWN5XCJdKVxuICAgIGJhbGFuY2VkQWNjdXJhY3kgPSBhcy5kb3VibGUoY20kYnlDbGFzc1tcIkJhbGFuY2VkIEFjY3VyYWN5XCJdKVxuICAgIHNwZWNpZmljaXR5ID0gYXMuZG91YmxlKGNtJGJ5Q2xhc3NbXCJTcGVjaWZpY2l0eVwiXSlcbiAgICBzZW5zaXRpdml0eSA9IGFzLmRvdWJsZShjbSRieUNsYXNzW1wiU2Vuc2l0aXZpdHlcIl0pXG4gICAgcmVzdWx0IDwtIHJiaW5kKHJlc3VsdCwgYyhpLCBqLCBvb2JFcnJvciwgYWNjdXJhY3ksIGJhbGFuY2VkQWNjdXJhY3ksIHNwZWNpZmljaXR5LCBzZW5zaXRpdml0eSkpXG4gIH1cbn1cbmBgYCJ9 -->
+<pre class="r"><code>setwd(&quot;./&quot;)
 df &lt;- read.csv(&quot;hotel_bookings.csv&quot;, sep = &#39;,&#39;,header = T)
 df$is_canceled &lt;- as.factor(df$is_canceled)
 set.seed(1122)
 index &lt;- sample(1:nrow(df), 0.9*dim(df)[1])
-train.df &lt;- df[-index,] # debug 使用少量测试数据
+train.df &lt;- df[index,]
 test.df &lt;- df[-index,]
 
-train.new.df &lt;- select(train.df, -reservation_status, -country, -agent, -company, -reservation_status_date)
+#train.new.df &lt;- select(train.df, -reservation_status, -country, -agent, -company, -reservation_status_date)
 
-result &lt;- matrix(nrow = 0, ncol = 6)
-colnames(result) &lt;- c(&quot;oobError&quot;,&quot;ntree&quot;,&quot;mtry&quot;,&quot;balancedAccuracy&quot;,&quot;specificity&quot;,&quot;sensitivity&quot;);
+result &lt;- matrix(nrow = 0, ncol = 7)
+colnames(result) &lt;- c(&quot;ntree&quot;,&quot;mtry&quot;,&quot;oobError&quot;,&quot;Accuracy&quot;,&quot;balancedAccuracy&quot;,&quot;specificity&quot;,&quot;sensitivity&quot;);
 
-mtry = floor(sqrt(ncol(train.new.df)))
+mtry = floor(sqrt(ncol(train.df)))
+
 ntrees &lt;- c(250, 500, 750)
 mtrys &lt;- c(mtry, mtry+1, mtry+2)
 for(i in ntrees){
   for(j in mtrys){
-    model &lt;- randomForest(is_canceled ~ ., data=train.new.df,ntree=i, mtry=j, na.action = na.omit)
+    model &lt;- randomForest(is_canceled ~ ., data=train.df,ntree=i, mtry=j, na.action = na.omit)
     oobError &lt;- mean(model$err.rate)
     pred &lt;- predict(model, test.df, type=&quot;class&quot;)
     cm &lt;- confusionMatrix(pred, as.factor(test.df$is_canceled), positive=&#39;1&#39;)
+    accuracy &lt;- as.double(cm$overall[&quot;Accuracy&quot;])
     balancedAccuracy = as.double(cm$byClass[&quot;Balanced Accuracy&quot;])
     specificity = as.double(cm$byClass[&quot;Specificity&quot;])
     sensitivity = as.double(cm$byClass[&quot;Sensitivity&quot;])
-    result &lt;- rbind(result, c(oobError, i, j, balancedAccuracy, specificity, sensitivity))
+    result &lt;- rbind(result, c(i, j, oobError, accuracy, balancedAccuracy, specificity, sensitivity))
   }
-}
-print(result)</code></pre>
+}</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgIG9vYkVycm9yIG50cmVlIG10cnkgYmFsYW5jZWRBY2N1cmFjeSBzcGVjaWZpY2l0eSBzZW5zaXRpdml0eVxuIFsxLF0gMC4xODU2MjEwICAgMjUwICAgIDUgICAgICAgIDAuOTkyOTY1NSAgIDAuOTk0OTI3OSAgIDAuOTkxMDAzMVxuIFsyLF0gMC4xODgyMjEzICAgMjUwICAgIDYgICAgICAgIDAuOTkzOTQ1NiAgIDAuOTk2NjYzMSAgIDAuOTkxMjI4MVxuIFszLF0gMC4xODg4ODE1ICAgMjUwICAgIDcgICAgICAgIDAuOTk0ODY2MyAgIDAuOTk2OTMwMSAgIDAuOTkyODAyNVxuIFs0LF0gMC4xODM5NTM3ICAgNTAwICAgIDUgICAgICAgIDAuOTkzMjExNSAgIDAuOTk1MTk0OSAgIDAuOTkxMjI4MVxuIFs1LF0gMC4xODI5MzExICAgNTAwICAgIDYgICAgICAgIDAuOTk0MjM3MiAgIDAuOTk2Nzk2NiAgIDAuOTkxNjc3OVxuIFs2LF0gMC4xODQzNDYyICAgNTAwICAgIDcgICAgICAgIDAuOTk0ODY2MyAgIDAuOTk2OTMwMSAgIDAuOTkyODAyNVxuIFs3LF0gMC4xODM0MjY0ICAgNzUwICAgIDUgICAgICAgIDAuOTkzMzg3MCAgIDAuOTk1OTk1NyAgIDAuOTkwNzc4MlxuIFs4LF0gMC4xODM3NjM4ICAgNzUwICAgIDYgICAgICAgIDAuOTk0NTc0NiAgIDAuOTk2Nzk2NiAgIDAuOTkyMzUyN1xuIFs5LF0gMC4xODE5Njc1ICAgNzUwICAgIDcgICAgICAgIDAuOTk1MDAzNSAgIDAuOTk2NTI5NiAgIDAuOTkzNDc3M1xuIn0= -->
-<pre><code>       oobError ntree mtry balancedAccuracy specificity sensitivity
- [1,] 0.1856210   250    5        0.9929655   0.9949279   0.9910031
- [2,] 0.1882213   250    6        0.9939456   0.9966631   0.9912281
- [3,] 0.1888815   250    7        0.9948663   0.9969301   0.9928025
- [4,] 0.1839537   500    5        0.9932115   0.9951949   0.9912281
- [5,] 0.1829311   500    6        0.9942372   0.9967966   0.9916779
- [6,] 0.1843462   500    7        0.9948663   0.9969301   0.9928025
- [7,] 0.1834264   750    5        0.9933870   0.9959957   0.9907782
- [8,] 0.1837638   750    6        0.9945746   0.9967966   0.9923527
- [9,] 0.1819675   750    7        0.9950035   0.9965296   0.9934773</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
 <div id="part-2.1-i" class="section level3">
 <h3>Part 2.1-i</h3>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
+<div id="model-of-ntree-500-and-mtry-6" class="section level4">
+<h4>model of ntree = 500 and mtry = 6</h4>
+</div>
 </div>
 <div id="part-2.1-ii" class="section level3">
 <h3>Part 2.1-ii</h3>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
+<div id="model-of-ntree-750-and-mtry-7" class="section level4">
+<h4>model of ntree = 750 and mtry = 7</h4>
+</div>
 </div>
 <div id="part-2.1-iii" class="section level3">
 <h3>Part 2.1-iii</h3>
+<div id="section" class="section level4">
+<h4></h4>
 <!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
+</div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQ1MgNDIyIgpvdXRwdXQ6IAogIGh0bWxfbm90ZWJvb2s6CiAgICB0b2M6IHllcwogICAgdG9jX2Zsb2F0OiB5ZXMKYXV0aG9yOiBXZW5sb25nIExpCi0tLQojIyMgUGFydCAyLjEKYGBge3J9CmxpYnJhcnkoY2FyZXQpCmxpYnJhcnkoZHBseXIpCmxpYnJhcnkocmFuZG9tRm9yZXN0KQpzZXR3ZCgiLi8iKQpkZiA8LSByZWFkLmNzdigiaG90ZWxfYm9va2luZ3MuY3N2Iiwgc2VwID0gJywnLGhlYWRlciA9IFQpCmRmJGlzX2NhbmNlbGVkIDwtIGFzLmZhY3RvcihkZiRpc19jYW5jZWxlZCkKc2V0LnNlZWQoMTEyMikKaW5kZXggPC0gc2FtcGxlKDE6bnJvdyhkZiksIDAuOSpkaW0oZGYpWzFdKQp0cmFpbi5kZiA8LSBkZlstaW5kZXgsXSAjIGRlYnVnIOS9v+eUqOWwkemHj+a1i+ivleaVsOaNrgp0ZXN0LmRmIDwtIGRmWy1pbmRleCxdCgp0cmFpbi5uZXcuZGYgPC0gc2VsZWN0KHRyYWluLmRmLCAtcmVzZXJ2YXRpb25fc3RhdHVzLCAtY291bnRyeSwgLWFnZW50LCAtY29tcGFueSwgLXJlc2VydmF0aW9uX3N0YXR1c19kYXRlKQoKcmVzdWx0IDwtIG1hdHJpeChucm93ID0gMCwgbmNvbCA9IDYpCmNvbG5hbWVzKHJlc3VsdCkgPC0gYygib29iRXJyb3IiLCJudHJlZSIsIm10cnkiLCJiYWxhbmNlZEFjY3VyYWN5Iiwic3BlY2lmaWNpdHkiLCJzZW5zaXRpdml0eSIpOwoKbXRyeSA9IGZsb29yKHNxcnQobmNvbCh0cmFpbi5uZXcuZGYpKSkKbnRyZWVzIDwtIGMoMjUwLCA1MDAsIDc1MCkKbXRyeXMgPC0gYyhtdHJ5LCBtdHJ5KzEsIG10cnkrMikKZm9yKGkgaW4gbnRyZWVzKXsKICBmb3IoaiBpbiBtdHJ5cyl7CiAgICBtb2RlbCA8LSByYW5kb21Gb3Jlc3QoaXNfY2FuY2VsZWQgfiAuLCBkYXRhPXRyYWluLm5ldy5kZixudHJlZT1pLCBtdHJ5PWosIG5hLmFjdGlvbiA9IG5hLm9taXQpCiAgICBvb2JFcnJvciA8LSBtZWFuKG1vZGVsJGVyci5yYXRlKQogICAgcHJlZCA8LSBwcmVkaWN0KG1vZGVsLCB0ZXN0LmRmLCB0eXBlPSJjbGFzcyIpCiAgICBjbSA8LSBjb25mdXNpb25NYXRyaXgocHJlZCwgYXMuZmFjdG9yKHRlc3QuZGYkaXNfY2FuY2VsZWQpLCBwb3NpdGl2ZT0nMScpCiAgICBiYWxhbmNlZEFjY3VyYWN5ID0gYXMuZG91YmxlKGNtJGJ5Q2xhc3NbIkJhbGFuY2VkIEFjY3VyYWN5Il0pCiAgICBzcGVjaWZpY2l0eSA9IGFzLmRvdWJsZShjbSRieUNsYXNzWyJTcGVjaWZpY2l0eSJdKQogICAgc2Vuc2l0aXZpdHkgPSBhcy5kb3VibGUoY20kYnlDbGFzc1siU2Vuc2l0aXZpdHkiXSkKICAgIHJlc3VsdCA8LSByYmluZChyZXN1bHQsIGMob29iRXJyb3IsIGksIGosIGJhbGFuY2VkQWNjdXJhY3ksIHNwZWNpZmljaXR5LCBzZW5zaXRpdml0eSkpCiAgfQp9CnByaW50KHJlc3VsdCkKCmBgYAojIyMgUGFydCAyLjEtaQpgYGB7cn0KCmBgYAojIyMgUGFydCAyLjEtaWkKYGBge3J9CgpgYGAKIyMjIFBhcnQgMi4xLWlpaQpgYGB7cn0KCmBgYA==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiQ1MgNDIyIgpvdXRwdXQ6IAogIGh0bWxfbm90ZWJvb2s6CiAgICB0b2M6IHllcwogICAgdG9jX2Zsb2F0OiB5ZXMKYXV0aG9yOiBXZW5sb25nIExpCi0tLQojIyMgUGFydCAyLjEKYGBge3J9CmxpYnJhcnkoY2FyZXQpCmxpYnJhcnkoZHBseXIpCmxpYnJhcnkocmFuZG9tRm9yZXN0KQpzZXR3ZCgiLi8iKQpkZiA8LSByZWFkLmNzdigiaG90ZWxfYm9va2luZ3MuY3N2Iiwgc2VwID0gJywnLGhlYWRlciA9IFQpCmRmJGlzX2NhbmNlbGVkIDwtIGFzLmZhY3RvcihkZiRpc19jYW5jZWxlZCkKc2V0LnNlZWQoMTEyMikKaW5kZXggPC0gc2FtcGxlKDE6bnJvdyhkZiksIDAuOSpkaW0oZGYpWzFdKQp0cmFpbi5kZiA8LSBkZltpbmRleCxdCnRlc3QuZGYgPC0gZGZbLWluZGV4LF0KCiN0cmFpbi5uZXcuZGYgPC0gc2VsZWN0KHRyYWluLmRmLCAtcmVzZXJ2YXRpb25fc3RhdHVzLCAtY291bnRyeSwgLWFnZW50LCAtY29tcGFueSwgLXJlc2VydmF0aW9uX3N0YXR1c19kYXRlKQoKcmVzdWx0IDwtIG1hdHJpeChucm93ID0gMCwgbmNvbCA9IDcpCmNvbG5hbWVzKHJlc3VsdCkgPC0gYygibnRyZWUiLCJtdHJ5Iiwib29iRXJyb3IiLCJBY2N1cmFjeSIsImJhbGFuY2VkQWNjdXJhY3kiLCJzcGVjaWZpY2l0eSIsInNlbnNpdGl2aXR5Iik7CgptdHJ5ID0gZmxvb3Ioc3FydChuY29sKHRyYWluLmRmKS0xKSkKCm50cmVlcyA8LSBjKDI1MCwgNTAwLCA3NTApCm10cnlzIDwtIGMobXRyeSwgbXRyeSsxLCBtdHJ5KzIpCmZvcihpIGluIG50cmVlcyl7CiAgZm9yKGogaW4gbXRyeXMpewogICAgbW9kZWwgPC0gcmFuZG9tRm9yZXN0KGlzX2NhbmNlbGVkIH4gLiwgZGF0YT10cmFpbi5kZixudHJlZT1pLCBtdHJ5PWosIG5hLmFjdGlvbiA9IG5hLm9taXQpCiAgICBvb2JFcnJvciA8LSBtZWFuKG1vZGVsJGVyci5yYXRlKQogICAgcHJlZCA8LSBwcmVkaWN0KG1vZGVsLCB0ZXN0LmRmLCB0eXBlPSJjbGFzcyIpCiAgICBjbSA8LSBjb25mdXNpb25NYXRyaXgocHJlZCwgdGVzdC5kZiRpc19jYW5jZWxlZCwgcG9zaXRpdmU9JzEnKQogICAgYWNjdXJhY3kgPC0gYXMuZG91YmxlKGNtJG92ZXJhbGxbIkFjY3VyYWN5Il0pCiAgICBiYWxhbmNlZEFjY3VyYWN5ID0gYXMuZG91YmxlKGNtJGJ5Q2xhc3NbIkJhbGFuY2VkIEFjY3VyYWN5Il0pCiAgICBzcGVjaWZpY2l0eSA9IGFzLmRvdWJsZShjbSRieUNsYXNzWyJTcGVjaWZpY2l0eSJdKQogICAgc2Vuc2l0aXZpdHkgPSBhcy5kb3VibGUoY20kYnlDbGFzc1siU2Vuc2l0aXZpdHkiXSkKICAgIHJlc3VsdCA8LSByYmluZChyZXN1bHQsIGMoaSwgaiwgb29iRXJyb3IsIGFjY3VyYWN5LCBiYWxhbmNlZEFjY3VyYWN5LCBzcGVjaWZpY2l0eSwgc2Vuc2l0aXZpdHkpKQogIH0KfQpwcmludChyZXN1bHQpCgpgYGAKIyMjIFBhcnQgMi4xLWkKIyMjIyBtb2RlbCBvZiBudHJlZSA9IDUwMCBhbmQgbXRyeSA9IDYKIyMjIFBhcnQgMi4xLWlpCiMjIyMgbW9kZWwgb2YgbnRyZWUgPSA3NTAgYW5kIG10cnkgPSA3CiMjIyBQYXJ0IDIuMS1paWkKIyMjIyA=</div>
 
 
 </div>

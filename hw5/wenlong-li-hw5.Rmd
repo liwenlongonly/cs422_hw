@@ -137,7 +137,7 @@ pruned.model <- prune(new.model, cp=cpx)
 ```{r}
 pruned.pred <- predict(pruned.model, test.df, type = "class")
 cmx<-confusionMatrix(pruned.pred, as.factor(test.df$is_canceled), positive='1')
-cat("Before pruning:\n  Accuracy:",round(as.double(cmx$overall["Accuracy"]),3),"\n  Error:",round(1-as.double(cmx$overall["Accuracy"]),3),"\n  Balanced Accuracy:",round(as.double(cmx$byClass["Balanced Accuracy"]),3),"\n  Specificity:",round(as.double(cmx$byClass["Specificity"]),3),"\n  Sensitivity:",round(as.double(cmx$byClass["Sensitivity"]),3),"\n  Precision:",round(as.double(cmx$byClass["Pos Pred Value"]),3))
+cat("After pruning:\n  Accuracy:",round(as.double(cmx$overall["Accuracy"]),3),"\n  Error:",round(1-as.double(cmx$overall["Accuracy"]),3),"\n  Balanced Accuracy:",round(as.double(cmx$byClass["Balanced Accuracy"]),3),"\n  Specificity:",round(as.double(cmx$byClass["Specificity"]),3),"\n  Sensitivity:",round(as.double(cmx$byClass["Sensitivity"]),3),"\n  Precision:",round(as.double(cmx$byClass["Pos Pred Value"]),3))
 ```
 ### Part 2.3-d
 #### The pruned tree generalizes better.
