@@ -19,7 +19,7 @@ index <- sample(1:nrow(df), 0.9*dim(df)[1])
 train.df <- df[index,]
 test.df <- df[-index,]
 
-#train.new.df <- select(train.df, -reservation_status, -country, -agent, -company, -reservation_status_date)
+train.df <- select(train.df, -reservation_status, -country, -agent, -company, -reservation_status_date)
 
 result <- matrix(nrow = 0, ncol = 7)
 colnames(result) <- c("ntree","mtry","oobError","Accuracy","balancedAccuracy","specificity","sensitivity");
