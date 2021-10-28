@@ -339,38 +339,51 @@ The following object is masked from ‘package:ggplot2’:
 
     margin</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0d2QoXCIuL1wiKVxuZGYgPC0gcmVhZC5jc3YoXCJob3RlbF9ib29raW5ncy5jc3ZcIiwgc2VwID0gJywnLGhlYWRlciA9IFQpXG5kZiRpc19jYW5jZWxlZCA8LSBhcy5mYWN0b3IoZGYkaXNfY2FuY2VsZWQpXG5zZXQuc2VlZCgxMTIyKVxuaW5kZXggPC0gc2FtcGxlKDE6bnJvdyhkZiksIDAuOSpkaW0oZGYpWzFdKVxudHJhaW4uZGYgPC0gZGZbaW5kZXgsXVxudGVzdC5kZiA8LSBkZlstaW5kZXgsXVxuXG4jdHJhaW4ubmV3LmRmIDwtIHNlbGVjdCh0cmFpbi5kZiwgLXJlc2VydmF0aW9uX3N0YXR1cywgLWNvdW50cnksIC1hZ2VudCwgLWNvbXBhbnksIC1yZXNlcnZhdGlvbl9zdGF0dXNfZGF0ZSlcblxucmVzdWx0IDwtIG1hdHJpeChucm93ID0gMCwgbmNvbCA9IDcpXG5jb2xuYW1lcyhyZXN1bHQpIDwtIGMoXCJudHJlZVwiLFwibXRyeVwiLFwib29iRXJyb3JcIixcIkFjY3VyYWN5XCIsXCJiYWxhbmNlZEFjY3VyYWN5XCIsXCJzcGVjaWZpY2l0eVwiLFwic2Vuc2l0aXZpdHlcIik7XG5cbm10cnkgPSBmbG9vcihzcXJ0KG5jb2wodHJhaW4uZGYpKSlcblxubnRyZWVzIDwtIGMoMjUwLCA1MDAsIDc1MClcbm10cnlzIDwtIGMobXRyeSwgbXRyeSsxLCBtdHJ5KzIpXG5mb3IoaSBpbiBudHJlZXMpe1xuICBmb3IoaiBpbiBtdHJ5cyl7XG4gICAgbW9kZWwgPC0gcmFuZG9tRm9yZXN0KGlzX2NhbmNlbGVkIH4gLiwgZGF0YT10cmFpbi5kZixudHJlZT1pLCBtdHJ5PWosIG5hLmFjdGlvbiA9IG5hLm9taXQpXG4gICAgb29iRXJyb3IgPC0gbWVhbihtb2RlbCRlcnIucmF0ZSlcbiAgICBwcmVkIDwtIHByZWRpY3QobW9kZWwsIHRlc3QuZGYsIHR5cGU9XCJjbGFzc1wiKVxuICAgIGNtIDwtIGNvbmZ1c2lvbk1hdHJpeChwcmVkLCBhcy5mYWN0b3IodGVzdC5kZiRpc19jYW5jZWxlZCksIHBvc2l0aXZlPScxJylcbiAgICBhY2N1cmFjeSA8LSBhcy5kb3VibGUoY20kb3ZlcmFsbFtcIkFjY3VyYWN5XCJdKVxuICAgIGJhbGFuY2VkQWNjdXJhY3kgPSBhcy5kb3VibGUoY20kYnlDbGFzc1tcIkJhbGFuY2VkIEFjY3VyYWN5XCJdKVxuICAgIHNwZWNpZmljaXR5ID0gYXMuZG91YmxlKGNtJGJ5Q2xhc3NbXCJTcGVjaWZpY2l0eVwiXSlcbiAgICBzZW5zaXRpdml0eSA9IGFzLmRvdWJsZShjbSRieUNsYXNzW1wiU2Vuc2l0aXZpdHlcIl0pXG4gICAgcmVzdWx0IDwtIHJiaW5kKHJlc3VsdCwgYyhpLCBqLCBvb2JFcnJvciwgYWNjdXJhY3ksIGJhbGFuY2VkQWNjdXJhY3ksIHNwZWNpZmljaXR5LCBzZW5zaXRpdml0eSkpXG4gIH1cbn1cbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0d2QoXCIuL1wiKVxuZGYgPC0gcmVhZC5jc3YoXCJob3RlbF9ib29raW5ncy5jc3ZcIiwgc2VwID0gJywnLGhlYWRlciA9IFQpXG5kZiRpc19jYW5jZWxlZCA8LSBhcy5mYWN0b3IoZGYkaXNfY2FuY2VsZWQpXG5cbnNldC5zZWVkKDExMjIpXG5pbmRleCA8LSBzYW1wbGUoMTpucm93KGRmKSwgMC45KmRpbShkZilbMV0pXG50cmFpbi5kZiA8LSBkZltpbmRleCxdXG50ZXN0LmRmIDwtIGRmWy1pbmRleCxdXG5cbnRyYWluLm5ldy5kZiA8LSBzZWxlY3QodHJhaW4uZGYsIC1yZXNlcnZhdGlvbl9zdGF0dXMsIC1jb3VudHJ5LCAtYWdlbnQsIC1jb21wYW55LCAtcmVzZXJ2YXRpb25fc3RhdHVzX2RhdGUpXG5cbnJlc3VsdCA8LSBtYXRyaXgobnJvdyA9IDAsIG5jb2wgPSA2KVxuY29sbmFtZXMocmVzdWx0KSA8LSBjKFwibnRyZWVcIixcIm10cnlcIixcIm9vYkVycm9yXCIsXCJiYWxhbmNlZEFjY3VyYWN5XCIsXCJzcGVjaWZpY2l0eVwiLFwic2Vuc2l0aXZpdHlcIik7XG5cbm10cnkgPSBmbG9vcihzcXJ0KG5jb2wodHJhaW4ubmV3LmRmKS0xKSlcblxubnRyZWVzIDwtIGMoMjUwLCA1MDAsIDc1MClcbm10cnlzIDwtIGMobXRyeSwgbXRyeSsxLCBtdHJ5KzIpXG5mb3IoaSBpbiBudHJlZXMpe1xuICBmb3IoaiBpbiBtdHJ5cyl7XG4gICAgbW9kZWwgPC0gcmFuZG9tRm9yZXN0KGlzX2NhbmNlbGVkIH4gLiwgZGF0YT10cmFpbi5uZXcuZGYsbnRyZWU9aSwgbXRyeT1qLCBuYS5hY3Rpb24gPSBuYS5vbWl0KVxuICAgIG9vYkVycm9yIDwtIG1lYW4obW9kZWwkZXJyLnJhdGUpXG4gICAgcHJlZCA8LSBwcmVkaWN0KG1vZGVsLCB0ZXN0LmRmLCB0eXBlPVwiY2xhc3NcIilcbiAgICBjbSA8LSBjb25mdXNpb25NYXRyaXgocHJlZCwgYXMuZmFjdG9yKHRlc3QuZGYkaXNfY2FuY2VsZWQpLCBwb3NpdGl2ZT0nMScpXG4gICAgYmFsYW5jZWRBY2N1cmFjeSA9IGFzLmRvdWJsZShjbSRieUNsYXNzW1wiQmFsYW5jZWQgQWNjdXJhY3lcIl0pXG4gICAgc3BlY2lmaWNpdHkgPSBhcy5kb3VibGUoY20kYnlDbGFzc1tcIlNwZWNpZmljaXR5XCJdKVxuICAgIHNlbnNpdGl2aXR5ID0gYXMuZG91YmxlKGNtJGJ5Q2xhc3NbXCJTZW5zaXRpdml0eVwiXSlcbiAgICByZXN1bHQgPC0gcmJpbmQocmVzdWx0LCBjKGksIGosIG9vYkVycm9yLCBiYWxhbmNlZEFjY3VyYWN5LCBzcGVjaWZpY2l0eSwgc2Vuc2l0aXZpdHkpKVxuICB9XG59XG5wcmludChyZXN1bHQpXG5gYGAifQ== -->
 <pre class="r"><code>setwd(&quot;./&quot;)
 df &lt;- read.csv(&quot;hotel_bookings.csv&quot;, sep = &#39;,&#39;,header = T)
 df$is_canceled &lt;- as.factor(df$is_canceled)
+
 set.seed(1122)
 index &lt;- sample(1:nrow(df), 0.9*dim(df)[1])
 train.df &lt;- df[index,]
 test.df &lt;- df[-index,]
 
-#train.new.df &lt;- select(train.df, -reservation_status, -country, -agent, -company, -reservation_status_date)
+train.new.df &lt;- select(train.df, -reservation_status, -country, -agent, -company, -reservation_status_date)
 
-result &lt;- matrix(nrow = 0, ncol = 7)
-colnames(result) &lt;- c(&quot;ntree&quot;,&quot;mtry&quot;,&quot;oobError&quot;,&quot;Accuracy&quot;,&quot;balancedAccuracy&quot;,&quot;specificity&quot;,&quot;sensitivity&quot;);
+result &lt;- matrix(nrow = 0, ncol = 6)
+colnames(result) &lt;- c(&quot;ntree&quot;,&quot;mtry&quot;,&quot;oobError&quot;,&quot;balancedAccuracy&quot;,&quot;specificity&quot;,&quot;sensitivity&quot;);
 
-mtry = floor(sqrt(ncol(train.df)))
+mtry = floor(sqrt(ncol(train.new.df)-1))
 
 ntrees &lt;- c(250, 500, 750)
 mtrys &lt;- c(mtry, mtry+1, mtry+2)
 for(i in ntrees){
   for(j in mtrys){
-    model &lt;- randomForest(is_canceled ~ ., data=train.df,ntree=i, mtry=j, na.action = na.omit)
+    model &lt;- randomForest(is_canceled ~ ., data=train.new.df,ntree=i, mtry=j, na.action = na.omit)
     oobError &lt;- mean(model$err.rate)
     pred &lt;- predict(model, test.df, type=&quot;class&quot;)
     cm &lt;- confusionMatrix(pred, as.factor(test.df$is_canceled), positive=&#39;1&#39;)
-    accuracy &lt;- as.double(cm$overall[&quot;Accuracy&quot;])
     balancedAccuracy = as.double(cm$byClass[&quot;Balanced Accuracy&quot;])
     specificity = as.double(cm$byClass[&quot;Specificity&quot;])
     sensitivity = as.double(cm$byClass[&quot;Sensitivity&quot;])
-    result &lt;- rbind(result, c(i, j, oobError, accuracy, balancedAccuracy, specificity, sensitivity))
+    result &lt;- rbind(result, c(i, j, oobError, balancedAccuracy, specificity, sensitivity))
   }
-}</code></pre>
+}
+print(result)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgbnRyZWUgbXRyeSAgb29iRXJyb3IgYmFsYW5jZWRBY2N1cmFjeSBzcGVjaWZpY2l0eSBzZW5zaXRpdml0eVxuIFsxLF0gICAyNTAgICAgNSAwLjE0ODQ3NTQgICAgICAgIDAuODUyNjI5NSAgIDAuOTM5NDAyMCAgIDAuNzY1ODU3MFxuIFsyLF0gICAyNTAgICAgNiAwLjE0NTMxOTcgICAgICAgIDAuODU2MzI3MSAgIDAuOTM3ODAwMyAgIDAuNzc0ODUzOFxuIFszLF0gICAyNTAgICAgNyAwLjE0NDQ5OTAgICAgICAgIDAuODU2NTgwNCAgIDAuOTM2NzMyNSAgIDAuNzc2NDI4M1xuIFs0LF0gICA1MDAgICAgNSAwLjE0NTI1NTQgICAgICAgIDAuODUxODkxNyAgIDAuOTM4NjAxMiAgIDAuNzY1MTgyMlxuIFs1LF0gICA1MDAgICAgNiAwLjE0MjU5MDYgICAgICAgIDAuODU4NDMxNyAgIDAuOTM5NTM1NSAgIDAuNzc3MzI3OVxuIFs2LF0gICA1MDAgICAgNyAwLjE0MjIwOTcgICAgICAgIDAuODU3NTcxNSAgIDAuOTM2NDY1NiAgIDAuNzc4Njc3NVxuIFs3LF0gICA3NTAgICAgNSAwLjE0NDk0MTAgICAgICAgIDAuODUxOTU4NCAgIDAuOTM4NzM0NyAgIDAuNzY1MTgyMlxuIFs4LF0gICA3NTAgICAgNiAwLjE0MTc1NTEgICAgICAgIDAuODU2NTk3NyAgIDAuOTM3NjY2OCAgIDAuNzc1NTI4NlxuIFs5LF0gICA3NTAgICAgNyAwLjE0MTI0MzIgICAgICAgIDAuODU2ODQ3MyAgIDAuOTM3MjY2NCAgIDAuNzc2NDI4M1xuIn0= -->
+<pre><code>      ntree mtry  oobError balancedAccuracy specificity sensitivity
+ [1,]   250    5 0.1484754        0.8526295   0.9394020   0.7658570
+ [2,]   250    6 0.1453197        0.8563271   0.9378003   0.7748538
+ [3,]   250    7 0.1444990        0.8565804   0.9367325   0.7764283
+ [4,]   500    5 0.1452554        0.8518917   0.9386012   0.7651822
+ [5,]   500    6 0.1425906        0.8584317   0.9395355   0.7773279
+ [6,]   500    7 0.1422097        0.8575715   0.9364656   0.7786775
+ [7,]   750    5 0.1449410        0.8519584   0.9387347   0.7651822
+ [8,]   750    6 0.1417551        0.8565977   0.9376668   0.7755286
+ [9,]   750    7 0.1412432        0.8568473   0.9372664   0.7764283</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -388,13 +401,13 @@ for(i in ntrees){
 </div>
 <div id="part-2.1-iii" class="section level3">
 <h3>Part 2.1-iii</h3>
-<div id="section" class="section level4">
-<h4></h4>
+<div id="no-mainly-because-of-the-problem-of-the-verification-set-the-verification-data-of-oob-error-is-verification-data-for-a-certain-decision-tree-but-it-may-be-training-data-for-another-decision-tree-so-oob-error-cannot-reflect-the-generalization-ability-of-this-model.-from-the-output-the-data-shows-that-the-smallest-oob-error-model-has-overfitting-problems-so-the-cross-validation-of-oob-error-and-confusion-matrix-cannot-be-used-as-the-same-evaluation-indicator" class="section level4">
+<h4>No, Mainly because of the problem of the verification set, the verification data of OOB Error is verification data for a certain decision tree, but it may be training data for another decision tree, so OOB Error cannot reflect the generalization ability of this model. From the output The data shows that the smallest OOB Error model has overfitting problems, so the cross-validation of OOB Error and confusion matrix cannot be used as the same evaluation indicator</h4>
 <!-- rnb-text-end -->
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQ1MgNDIyIgpvdXRwdXQ6IAogIGh0bWxfbm90ZWJvb2s6CiAgICB0b2M6IHllcwogICAgdG9jX2Zsb2F0OiB5ZXMKYXV0aG9yOiBXZW5sb25nIExpCi0tLQojIyMgUGFydCAyLjEKYGBge3J9CmxpYnJhcnkoY2FyZXQpCmxpYnJhcnkoZHBseXIpCmxpYnJhcnkocmFuZG9tRm9yZXN0KQpzZXR3ZCgiLi8iKQpkZiA8LSByZWFkLmNzdigiaG90ZWxfYm9va2luZ3MuY3N2Iiwgc2VwID0gJywnLGhlYWRlciA9IFQpCmRmJGlzX2NhbmNlbGVkIDwtIGFzLmZhY3RvcihkZiRpc19jYW5jZWxlZCkKc2V0LnNlZWQoMTEyMikKaW5kZXggPC0gc2FtcGxlKDE6bnJvdyhkZiksIDAuOSpkaW0oZGYpWzFdKQp0cmFpbi5kZiA8LSBkZltpbmRleCxdCnRlc3QuZGYgPC0gZGZbLWluZGV4LF0KCnRyYWluLmRmIDwtIHNlbGVjdCh0cmFpbi5kZiwgLXJlc2VydmF0aW9uX3N0YXR1cywgLWNvdW50cnksIC1hZ2VudCwgLWNvbXBhbnksIC1yZXNlcnZhdGlvbl9zdGF0dXNfZGF0ZSkKCnJlc3VsdCA8LSBtYXRyaXgobnJvdyA9IDAsIG5jb2wgPSA3KQpjb2xuYW1lcyhyZXN1bHQpIDwtIGMoIm50cmVlIiwibXRyeSIsIm9vYkVycm9yIiwiQWNjdXJhY3kiLCJiYWxhbmNlZEFjY3VyYWN5Iiwic3BlY2lmaWNpdHkiLCJzZW5zaXRpdml0eSIpOwoKbXRyeSA9IGZsb29yKHNxcnQobmNvbCh0cmFpbi5kZiktMSkpCgpudHJlZXMgPC0gYygyNTAsIDUwMCwgNzUwKQptdHJ5cyA8LSBjKG10cnksIG10cnkrMSwgbXRyeSsyKQpmb3IoaSBpbiBudHJlZXMpewogIGZvcihqIGluIG10cnlzKXsKICAgIG1vZGVsIDwtIHJhbmRvbUZvcmVzdChpc19jYW5jZWxlZCB+IC4sIGRhdGE9dHJhaW4uZGYsbnRyZWU9aSwgbXRyeT1qLCBuYS5hY3Rpb24gPSBuYS5vbWl0KQogICAgb29iRXJyb3IgPC0gbWVhbihtb2RlbCRlcnIucmF0ZSkKICAgIHByZWQgPC0gcHJlZGljdChtb2RlbCwgdGVzdC5kZiwgdHlwZT0iY2xhc3MiKQogICAgY20gPC0gY29uZnVzaW9uTWF0cml4KHByZWQsIHRlc3QuZGYkaXNfY2FuY2VsZWQsIHBvc2l0aXZlPScxJykKICAgIGFjY3VyYWN5IDwtIGFzLmRvdWJsZShjbSRvdmVyYWxsWyJBY2N1cmFjeSJdKQogICAgYmFsYW5jZWRBY2N1cmFjeSA9IGFzLmRvdWJsZShjbSRieUNsYXNzWyJCYWxhbmNlZCBBY2N1cmFjeSJdKQogICAgc3BlY2lmaWNpdHkgPSBhcy5kb3VibGUoY20kYnlDbGFzc1siU3BlY2lmaWNpdHkiXSkKICAgIHNlbnNpdGl2aXR5ID0gYXMuZG91YmxlKGNtJGJ5Q2xhc3NbIlNlbnNpdGl2aXR5Il0pCiAgICByZXN1bHQgPC0gcmJpbmQocmVzdWx0LCBjKGksIGosIG9vYkVycm9yLCBhY2N1cmFjeSwgYmFsYW5jZWRBY2N1cmFjeSwgc3BlY2lmaWNpdHksIHNlbnNpdGl2aXR5KSkKICB9Cn0KcHJpbnQocmVzdWx0KQoKYGBgCiMjIyBQYXJ0IDIuMS1pCiMjIyMgbW9kZWwgb2YgbnRyZWUgPSA1MDAgYW5kIG10cnkgPSA2CiMjIyBQYXJ0IDIuMS1paQojIyMjIG1vZGVsIG9mIG50cmVlID0gNzUwIGFuZCBtdHJ5ID0gNwojIyMgUGFydCAyLjEtaWlpCiMjIyMg</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiQ1MgNDIyIgpvdXRwdXQ6IAogIGh0bWxfbm90ZWJvb2s6CiAgICB0b2M6IHllcwogICAgdG9jX2Zsb2F0OiB5ZXMKYXV0aG9yOiBXZW5sb25nIExpCi0tLQojIyMgUGFydCAyLjEKYGBge3J9CmxpYnJhcnkoY2FyZXQpCmxpYnJhcnkoZHBseXIpCmxpYnJhcnkocmFuZG9tRm9yZXN0KQpzZXR3ZCgiLi8iKQpkZiA8LSByZWFkLmNzdigiaG90ZWxfYm9va2luZ3MuY3N2Iiwgc2VwID0gJywnLGhlYWRlciA9IFQpCmRmJGlzX2NhbmNlbGVkIDwtIGFzLmZhY3RvcihkZiRpc19jYW5jZWxlZCkKCnNldC5zZWVkKDExMjIpCmluZGV4IDwtIHNhbXBsZSgxOm5yb3coZGYpLCAwLjkqZGltKGRmKVsxXSkKdHJhaW4uZGYgPC0gZGZbaW5kZXgsXQp0ZXN0LmRmIDwtIGRmWy1pbmRleCxdCgp0cmFpbi5uZXcuZGYgPC0gc2VsZWN0KHRyYWluLmRmLCAtcmVzZXJ2YXRpb25fc3RhdHVzLCAtY291bnRyeSwgLWFnZW50LCAtY29tcGFueSwgLXJlc2VydmF0aW9uX3N0YXR1c19kYXRlKQoKcmVzdWx0IDwtIG1hdHJpeChucm93ID0gMCwgbmNvbCA9IDYpCmNvbG5hbWVzKHJlc3VsdCkgPC0gYygibnRyZWUiLCJtdHJ5Iiwib29iRXJyb3IiLCJiYWxhbmNlZEFjY3VyYWN5Iiwic3BlY2lmaWNpdHkiLCJzZW5zaXRpdml0eSIpOwoKbXRyeSA9IGZsb29yKHNxcnQobmNvbCh0cmFpbi5uZXcuZGYpLTEpKQoKbnRyZWVzIDwtIGMoMjUwLCA1MDAsIDc1MCkKbXRyeXMgPC0gYyhtdHJ5LCBtdHJ5KzEsIG10cnkrMikKZm9yKGkgaW4gbnRyZWVzKXsKICBmb3IoaiBpbiBtdHJ5cyl7CiAgICBtb2RlbCA8LSByYW5kb21Gb3Jlc3QoaXNfY2FuY2VsZWQgfiAuLCBkYXRhPXRyYWluLm5ldy5kZixudHJlZT1pLCBtdHJ5PWosIG5hLmFjdGlvbiA9IG5hLm9taXQpCiAgICBvb2JFcnJvciA8LSBtZWFuKG1vZGVsJGVyci5yYXRlKQogICAgcHJlZCA8LSBwcmVkaWN0KG1vZGVsLCB0ZXN0LmRmLCB0eXBlPSJjbGFzcyIpCiAgICBjbSA8LSBjb25mdXNpb25NYXRyaXgocHJlZCwgYXMuZmFjdG9yKHRlc3QuZGYkaXNfY2FuY2VsZWQpLCBwb3NpdGl2ZT0nMScpCiAgICBiYWxhbmNlZEFjY3VyYWN5ID0gYXMuZG91YmxlKGNtJGJ5Q2xhc3NbIkJhbGFuY2VkIEFjY3VyYWN5Il0pCiAgICBzcGVjaWZpY2l0eSA9IGFzLmRvdWJsZShjbSRieUNsYXNzWyJTcGVjaWZpY2l0eSJdKQogICAgc2Vuc2l0aXZpdHkgPSBhcy5kb3VibGUoY20kYnlDbGFzc1siU2Vuc2l0aXZpdHkiXSkKICAgIHJlc3VsdCA8LSByYmluZChyZXN1bHQsIGMoaSwgaiwgb29iRXJyb3IsIGJhbGFuY2VkQWNjdXJhY3ksIHNwZWNpZmljaXR5LCBzZW5zaXRpdml0eSkpCiAgfQp9CnByaW50KHJlc3VsdCkKCmBgYAojIyMgUGFydCAyLjEtaQojIyMjIG1vZGVsIG9mIG50cmVlID0gNTAwIGFuZCBtdHJ5ID0gNgojIyMgUGFydCAyLjEtaWkKIyMjIyBtb2RlbCBvZiBudHJlZSA9IDc1MCBhbmQgbXRyeSA9IDcKIyMjIFBhcnQgMi4xLWlpaQojIyMjIE5vLCBNYWlubHkgYmVjYXVzZSBvZiB0aGUgcHJvYmxlbSBvZiB0aGUgdmVyaWZpY2F0aW9uIHNldCwgdGhlIHZlcmlmaWNhdGlvbiBkYXRhIG9mIE9PQiBFcnJvciBpcyB2ZXJpZmljYXRpb24gZGF0YSBmb3IgYSBjZXJ0YWluIGRlY2lzaW9uIHRyZWUsIGJ1dCBpdCBtYXkgYmUgdHJhaW5pbmcgZGF0YSBmb3IgYW5vdGhlciBkZWNpc2lvbiB0cmVlLCBzbyBPT0IgRXJyb3IgY2Fubm90IHJlZmxlY3QgdGhlIGdlbmVyYWxpemF0aW9uIGFiaWxpdHkgb2YgdGhpcyBtb2RlbC4gRnJvbSB0aGUgb3V0cHV0IFRoZSBkYXRhIHNob3dzIHRoYXQgdGhlIHNtYWxsZXN0IE9PQiBFcnJvciBtb2RlbCBoYXMgb3ZlcmZpdHRpbmcgcHJvYmxlbXMsIHNvIHRoZSBjcm9zcy12YWxpZGF0aW9uIG9mIE9PQiBFcnJvciBhbmQgY29uZnVzaW9uIG1hdHJpeCBjYW5ub3QgYmUgdXNlZCBhcyB0aGUgc2FtZSBldmFsdWF0aW9uIGluZGljYXRvcg==</div>
 
 
 </div>
