@@ -23,7 +23,7 @@ test.df <- df[-index,]
 train.new.df <- select(train.df, -reservation_status, -country, -agent, -company, -reservation_status_date)
 
 result <- matrix(nrow = 0, ncol = 7)
-colnames(result) <- c("ntree","mtry","oobError", "accuracy","balancedAccuracy","specificity","sensitivity");
+colnames(result) <- c("ntree","mtry","OOB", "Accuracy","BalancedAccuracy","Specificity","Sensitivity");
 
 mtry = floor(sqrt(ncol(train.new.df)-1))
 
@@ -42,12 +42,28 @@ for(i in ntrees){
     result <- rbind(result, c(i, j, oobError, accuracy, balancedAccuracy, specificity, sensitivity))
   }
 }
-print(result)
-
+dt=data.frame(result)
+dt
 ```
 ### Part 2.1-a
-#### model of ntree = 500 and mtry = 6
+```{r}
+index <- which.max(unlist(dt$BalancedAccuracy))
+ret <- dt[index,]
+cat("Grid search resulted in the best model at ntree =",ret$ntree," and mtry =",ret$mtry,".\n",
+    "Accuracy =",ret$Accuracy,"\n",
+    "Balanced Accuracy =",ret$BalancedAccuracy,"\n",
+    "Sensitivity =",ret$Sensitivity,"\n",
+    "Specificity =",ret$Specificity)
+```
 ### Part 2.1-b
+```{r}
+index <- which.min(unlist(dt$OOB))
+ret <- dt[index,]
+ret
+cat("Grid search resulted in the best model for OOB at ntree =",ret$ntree," and mtry =",ret$mtry,".\n",
+   "OOB =",ret$OOB)
+```
+
 #### model of ntree = 750 and mtry = 7
 ### Part 2.1-c
-#### No, Mainly because of the problem of the verification set, the verification data of OOB Error is verification data for a certain decision tree, but it may be training data for another decision tree, so OOB Error cannot reflect the generalization ability of this model. From the output The data shows that the smallest OOB Error model has overfitting problems, so the cross-validation of OOB Error and confusion matrix cannot be used as the same evaluation indicator
+#### No, Mainly because of the problem of the verification set, the verification data of OOB Error is verification data for a certain decision tree, but it may be training data for another decision tree, so OOB Error cannot reflect the generalization ability of this model. From the output The data shows that the smallest OOB Error model has overfitting problems, so the cross-validation of OOB Error and confusion matrix cannot be used as the same evaluation indicator.
