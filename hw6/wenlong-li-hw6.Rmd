@@ -22,8 +22,8 @@ test.df <- df[-index,]
 
 train.new.df <- select(train.df, -reservation_status, -country, -agent, -company, -reservation_status_date)
 
-result <- matrix(nrow = 0, ncol = 6)
-colnames(result) <- c("ntree","mtry","oobError","balancedAccuracy","specificity","sensitivity");
+result <- matrix(nrow = 0, ncol = 7)
+colnames(result) <- c("ntree","mtry","oobError", "accuracy","balancedAccuracy","specificity","sensitivity");
 
 mtry = floor(sqrt(ncol(train.new.df)-1))
 
@@ -35,18 +35,19 @@ for(i in ntrees){
     oobError <- mean(model$err.rate)
     pred <- predict(model, test.df, type="class")
     cm <- confusionMatrix(pred, as.factor(test.df$is_canceled), positive='1')
-    balancedAccuracy = as.double(cm$byClass["Balanced Accuracy"])
-    specificity = as.double(cm$byClass["Specificity"])
-    sensitivity = as.double(cm$byClass["Sensitivity"])
-    result <- rbind(result, c(i, j, oobError, balancedAccuracy, specificity, sensitivity))
+    accuracy <- as.double(cm$overall["Accuracy"])
+    balancedAccuracy <- as.double(cm$byClass["Balanced Accuracy"])
+    specificity <- as.double(cm$byClass["Specificity"])
+    sensitivity <- as.double(cm$byClass["Sensitivity"])
+    result <- rbind(result, c(i, j, oobError, accuracy, balancedAccuracy, specificity, sensitivity))
   }
 }
 print(result)
 
 ```
-### Part 2.1-i
+### Part 2.1-a
 #### model of ntree = 500 and mtry = 6
-### Part 2.1-ii
+### Part 2.1-b
 #### model of ntree = 750 and mtry = 7
-### Part 2.1-iii
+### Part 2.1-c
 #### No, Mainly because of the problem of the verification set, the verification data of OOB Error is verification data for a certain decision tree, but it may be training data for another decision tree, so OOB Error cannot reflect the generalization ability of this model. From the output The data shows that the smallest OOB Error model has overfitting problems, so the cross-validation of OOB Error and confusion matrix cannot be used as the same evaluation indicator
