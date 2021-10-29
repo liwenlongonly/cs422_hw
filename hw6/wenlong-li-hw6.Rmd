@@ -63,7 +63,5 @@ ret
 cat("Grid search resulted in the best model for OOB at ntree =",ret$ntree," and mtry =",ret$mtry,".\n",
    "OOB =",ret$OOB)
 ```
-
-#### model of ntree = 750 and mtry = 7
 ### Part 2.1-c
 #### No, Mainly because of the problem of the verification set, the verification data of OOB Error is verification data for a certain decision tree, but it may be training data for another decision tree, so OOB Error cannot reflect the generalization ability of this model. From the output The data shows that the smallest OOB Error model has overfitting problems, so the cross-validation of OOB Error and confusion matrix cannot be used as the same evaluation indicator.
