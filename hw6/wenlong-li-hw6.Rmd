@@ -43,7 +43,6 @@ for(i in ntrees){
   }
 }
 dt=data.frame(result)
-dt
 ```
 ### Part 2.1-a
 ```{r}
@@ -59,7 +58,6 @@ cat("Grid search resulted in the best model at ntree =",ret$ntree," and mtry =",
 ```{r}
 index <- which.min(unlist(dt$OOB))
 ret <- dt[index,]
-ret
 cat("Grid search resulted in the best model for OOB at ntree =",ret$ntree," and mtry =",ret$mtry,".\n",
    "OOB =",ret$OOB)
 ```
