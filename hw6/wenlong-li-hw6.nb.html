@@ -297,18 +297,59 @@ div.tocify {
 <h3>Part 2.1</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZHQ9ZGF0YS5mcmFtZShyZXN1bHQpXG5cbmBgYCJ9 -->
-<pre class="r"><code>dt=data.frame(result)
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShjYXJldClcbmxpYnJhcnkoZHBseXIpXG5saWJyYXJ5KHJhbmRvbUZvcmVzdClcbmBgYCJ9 -->
+<pre class="r"><code>library(caret)
+library(dplyr)
+library(randomForest)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZGF0YS5mcmFtZShyZXN1bHQpIDog5om+5LiN5Yiw5a+56LGhJ3Jlc3VsdCdcbuatpOWkljogV2FybmluZyBtZXNzYWdlczpcbjE6IEluIGlmIChjaGFyVG9SYXcoeCkgPCAyMCkgcGFzdGUoXCJcXFxcdVwiLCB0b3VwcGVyKGZvcm1hdChhcy5oZXhtb2RlKGFzLmludGVnZXIoY2hhclRvUmF3KHgpKSksICA6XG4gIOadoeS7tueahOmVv+W6puWkp+S6juS4gO+8jOWboOatpOWPquiDveeUqOWFtuesrOS4gOWFg+e0oFxuMjogSW4gaWYgKGNoYXJUb1Jhdyh4KSA8IDIwKSBwYXN0ZShcIlxcXFx1XCIsIHRvdXBwZXIoZm9ybWF0KGFzLmhleG1vZGUoYXMuaW50ZWdlcihjaGFyVG9SYXcoeCkpKSwgIDpcbiAg5p2h5Lu255qE6ZW/5bqm5aSn5LqO5LiA77yM5Zug5q2k5Y+q6IO955So5YW256ys5LiA5YWD57SgXG4ifQ== -->
-<pre><code>Error in data.frame(result) : 找不到对象&#39;result&#39;
-此外: Warning messages:
-1: In if (charToRaw(x) &lt; 20) paste(&quot;\\u&quot;, toupper(format(as.hexmode(as.integer(charToRaw(x))),  :
-  条件的长度大于一，因此只能用其第一元素
-2: In if (charToRaw(x) &lt; 20) paste(&quot;\\u&quot;, toupper(format(as.hexmode(as.integer(charToRaw(x))),  :
-  条件的长度大于一，因此只能用其第一元素</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoicmFuZG9tRm9yZXN0IDQuNi0xNFxuVHlwZSByZk5ld3MoKSB0byBzZWUgbmV3IGZlYXR1cmVzL2NoYW5nZXMvYnVnIGZpeGVzLlxuXG7ovb3lhaXnqIvovpHljIXvvJrigJhyYW5kb21Gb3Jlc3TigJlcblxuVGhlIGZvbGxvd2luZyBvYmplY3QgaXMgbWFza2VkIGZyb20g4oCYcGFja2FnZTpnZ3Bsb3Qy4oCZOlxuXG4gICAgbWFyZ2luXG5cblRoZSBmb2xsb3dpbmcgb2JqZWN0IGlzIG1hc2tlZCBmcm9tIOKAmHBhY2thZ2U6ZHBseXLigJk6XG5cbiAgICBjb21iaW5lXG4ifQ== -->
+<pre><code>randomForest 4.6-14
+Type rfNews() to see new features/changes/bug fixes.
+
+载入程辑包：‘randomForest’
+
+The following object is masked from ‘package:ggplot2’:
+
+    margin
+
+The following object is masked from ‘package:dplyr’:
+
+    combine</code></pre>
 <!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0d2QoXCIuL1wiKVxuZGYgPC0gcmVhZC5jc3YoXCJob3RlbF9ib29raW5ncy5jc3ZcIiwgc2VwID0gJywnLGhlYWRlciA9IFQpXG5kZiRpc19jYW5jZWxlZCA8LSBhcy5mYWN0b3IoZGYkaXNfY2FuY2VsZWQpXG5cbnNldC5zZWVkKDExMjIpXG5pbmRleCA8LSBzYW1wbGUoMTpucm93KGRmKSwgMC45KmRpbShkZilbMV0pXG50cmFpbi5kZiA8LSBkZltpbmRleCxdXG50ZXN0LmRmIDwtIGRmWy1pbmRleCxdXG5cbnRyYWluLm5ldy5kZiA8LSBzZWxlY3QodHJhaW4uZGYsIC1yZXNlcnZhdGlvbl9zdGF0dXMsIC1jb3VudHJ5LCAtYWdlbnQsIC1jb21wYW55LCAtcmVzZXJ2YXRpb25fc3RhdHVzX2RhdGUpXG5cbnJlc3VsdCA8LSBtYXRyaXgobnJvdyA9IDAsIG5jb2wgPSA3KVxuY29sbmFtZXMocmVzdWx0KSA8LSBjKFwibnRyZWVcIixcIm10cnlcIixcIk9PQlwiLCBcIkFjY3VyYWN5XCIsXCJCYWxhbmNlZEFjY3VyYWN5XCIsXCJTcGVjaWZpY2l0eVwiLFwiU2Vuc2l0aXZpdHlcIik7XG5cbm10cnkgPSBmbG9vcihzcXJ0KG5jb2wodHJhaW4ubmV3LmRmKS0xKSlcblxubnRyZWVzIDwtIGMoMjUwLCA1MDAsIDc1MClcbm10cnlzIDwtIGMobXRyeSwgbXRyeSsxLCBtdHJ5KzIpXG5mb3IoaSBpbiBudHJlZXMpe1xuICBmb3IoaiBpbiBtdHJ5cyl7XG4gICAgbW9kZWwgPC0gcmFuZG9tRm9yZXN0KGlzX2NhbmNlbGVkIH4gLiwgZGF0YT10cmFpbi5uZXcuZGYsbnRyZWU9aSwgbXRyeT1qLCBuYS5hY3Rpb24gPSBuYS5vbWl0KVxuICAgIG9vYkVycm9yIDwtIG1lYW4obW9kZWwkZXJyLnJhdGUpXG4gICAgcHJlZCA8LSBwcmVkaWN0KG1vZGVsLCB0ZXN0LmRmLCB0eXBlPVwiY2xhc3NcIilcbiAgICBjbSA8LSBjb25mdXNpb25NYXRyaXgocHJlZCwgYXMuZmFjdG9yKHRlc3QuZGYkaXNfY2FuY2VsZWQpLCBwb3NpdGl2ZT0nMScpXG4gICAgYWNjdXJhY3kgPC0gYXMuZG91YmxlKGNtJG92ZXJhbGxbXCJBY2N1cmFjeVwiXSlcbiAgICBiYWxhbmNlZEFjY3VyYWN5IDwtIGFzLmRvdWJsZShjbSRieUNsYXNzW1wiQmFsYW5jZWQgQWNjdXJhY3lcIl0pXG4gICAgc3BlY2lmaWNpdHkgPC0gYXMuZG91YmxlKGNtJGJ5Q2xhc3NbXCJTcGVjaWZpY2l0eVwiXSlcbiAgICBzZW5zaXRpdml0eSA8LSBhcy5kb3VibGUoY20kYnlDbGFzc1tcIlNlbnNpdGl2aXR5XCJdKVxuICAgIHJlc3VsdCA8LSByYmluZChyZXN1bHQsIGMoaSwgaiwgb29iRXJyb3IsIGFjY3VyYWN5LCBiYWxhbmNlZEFjY3VyYWN5LCBzcGVjaWZpY2l0eSwgc2Vuc2l0aXZpdHkpKVxuICB9XG59XG5kdD1kYXRhLmZyYW1lKHJlc3VsdClcbmBgYCJ9 -->
+<pre class="r"><code>setwd(&quot;./&quot;)
+df &lt;- read.csv(&quot;hotel_bookings.csv&quot;, sep = &#39;,&#39;,header = T)
+df$is_canceled &lt;- as.factor(df$is_canceled)
+
+set.seed(1122)
+index &lt;- sample(1:nrow(df), 0.9*dim(df)[1])
+train.df &lt;- df[index,]
+test.df &lt;- df[-index,]
+
+train.new.df &lt;- select(train.df, -reservation_status, -country, -agent, -company, -reservation_status_date)
+
+result &lt;- matrix(nrow = 0, ncol = 7)
+colnames(result) &lt;- c(&quot;ntree&quot;,&quot;mtry&quot;,&quot;OOB&quot;, &quot;Accuracy&quot;,&quot;BalancedAccuracy&quot;,&quot;Specificity&quot;,&quot;Sensitivity&quot;);
+
+mtry = floor(sqrt(ncol(train.new.df)-1))
+
+ntrees &lt;- c(250, 500, 750)
+mtrys &lt;- c(mtry, mtry+1, mtry+2)
+for(i in ntrees){
+  for(j in mtrys){
+    model &lt;- randomForest(is_canceled ~ ., data=train.new.df,ntree=i, mtry=j, na.action = na.omit)
+    oobError &lt;- mean(model$err.rate)
+    pred &lt;- predict(model, test.df, type=&quot;class&quot;)
+    cm &lt;- confusionMatrix(pred, as.factor(test.df$is_canceled), positive=&#39;1&#39;)
+    accuracy &lt;- as.double(cm$overall[&quot;Accuracy&quot;])
+    balancedAccuracy &lt;- as.double(cm$byClass[&quot;Balanced Accuracy&quot;])
+    specificity &lt;- as.double(cm$byClass[&quot;Specificity&quot;])
+    sensitivity &lt;- as.double(cm$byClass[&quot;Sensitivity&quot;])
+    result &lt;- rbind(result, c(i, j, oobError, accuracy, balancedAccuracy, specificity, sensitivity))
+  }
+}
+dt=data.frame(result)</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -316,62 +357,39 @@ div.tocify {
 <h3>Part 2.1-a</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuaW5kZXggPC0gd2hpY2gubWF4KHVubGlzdChkdCRCYWxhbmNlZEFjY3VyYWN5KSlcbnJldCA8LSBkdFtpbmRleCxdXG5jYXQoXFxHcmlkIHNlYXJjaCByZXN1bHRlZCBpbiB0aGUgYmVzdCBtb2RlbCBhdCBudHJlZSA9XFwscmV0JG50cmVlLFxcIGFuZCBtdHJ5ID1cXCxyZXQkbXRyeSxcXC5cXG5cXCxcbiAgICBcXEFjY3VyYWN5ID1cXCxyZXQkQWNjdXJhY3ksXFxcXG5cXCxcbiAgICBcXEJhbGFuY2VkIEFjY3VyYWN5ID1cXCxyZXQkQmFsYW5jZWRBY2N1cmFjeSxcXFxcblxcLFxuICAgIFxcU2Vuc2l0aXZpdHkgPVxcLHJldCRTZW5zaXRpdml0eSxcXFxcblxcLFxuICAgIFxcU3BlY2lmaWNpdHkgPVxcLHJldCRTcGVjaWZpY2l0eSlcbmBgYFxuYGBgIn0= -->
-<pre class="r"><code>```r
-index &lt;- which.max(unlist(dt$BalancedAccuracy))
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5kZXggPC0gd2hpY2gubWF4KHVubGlzdChkdCRCYWxhbmNlZEFjY3VyYWN5KSlcbnJldCA8LSBkdFtpbmRleCxdXG5jYXQoXCJHcmlkIHNlYXJjaCByZXN1bHRlZCBpbiB0aGUgYmVzdCBtb2RlbCBhdCBudHJlZSA9XCIscmV0JG50cmVlLFwiIGFuZCBtdHJ5ID1cIixyZXQkbXRyeSxcIi5cXG5cIixcbiAgICBcIkFjY3VyYWN5ID1cIixyZXQkQWNjdXJhY3ksXCJcXG5cIixcbiAgICBcIkJhbGFuY2VkIEFjY3VyYWN5ID1cIixyZXQkQmFsYW5jZWRBY2N1cmFjeSxcIlxcblwiLFxuICAgIFwiU2Vuc2l0aXZpdHkgPVwiLHJldCRTZW5zaXRpdml0eSxcIlxcblwiLFxuICAgIFwiU3BlY2lmaWNpdHkgPVwiLHJldCRTcGVjaWZpY2l0eSlcbmBgYCJ9 -->
+<pre class="r"><code>index &lt;- which.max(unlist(dt$BalancedAccuracy))
 ret &lt;- dt[index,]
-cat(\Grid search resulted in the best model at ntree =\,ret$ntree,\ and mtry =\,ret$mtry,\.\n\,
-    \Accuracy =\,ret$Accuracy,\\n\,
-    \Balanced Accuracy =\,ret$BalancedAccuracy,\\n\,
-    \Sensitivity =\,ret$Sensitivity,\\n\,
-    \Specificity =\,ret$Specificity)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiR3JpZCBzZWFyY2ggcmVzdWx0ZWQgaW4gdGhlIGJlc3QgbW9kZWwgYXQgbnRyZWUgPSA1MDAgIGFuZCBtdHJ5ID0gNiAuXG4gQWNjdXJhY3kgPSAwLjg3OTEyNTUgXG4gQmFsYW5jZWQgQWNjdXJhY3kgPSAwLjg1ODQzMTcgXG4gU2Vuc2l0aXZpdHkgPSAwLjc3NzMyNzkgXG4gU3BlY2lmaWNpdHkgPSAwLjkzOTUzNTVcbiJ9 --&gt;
-</code></pre>
-<p>Grid search resulted in the best model at ntree = 500 and mtry = 6 . Accuracy = 0.8791255 Balanced Accuracy = 0.8584317 Sensitivity = 0.7773279 Specificity = 0.9395355</p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-### Part 2.1-b
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuaW5kZXggPC0gd2hpY2gubWluKHVubGlzdChkdCRPT0IpKVxucmV0IDwtIGR0W2luZGV4LF1cbnJldFxuYGBgXG5gYGByXG5jYXQoXFxHcmlkIHNlYXJjaCByZXN1bHRlZCBpbiB0aGUgYmVzdCBtb2RlbCBmb3IgT09CIGF0IG50cmVlID1cXCxyZXQkbnRyZWUsXFwgYW5kIG10cnkgPVxcLHJldCRtdHJ5LFxcLlxcblxcLFxuICAgXFxPT0IgPVxcLHJldCRPT0IpXG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-index &lt;- which.min(unlist(dt$OOB))
-ret &lt;- dt[index,]
-ret</code></pre>
-<pre class="r"><code>cat(\Grid search resulted in the best model for OOB at ntree =\,ret$ntree,\ and mtry =\,ret$mtry,\.\n\,
-   \OOB =\,ret$OOB)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiR3JpZCBzZWFyY2ggcmVzdWx0ZWQgaW4gdGhlIGJlc3QgbW9kZWwgZm9yIE9PQiBhdCBudHJlZSA9IDc1MCAgYW5kIG10cnkgPSA3IC5cbiBPT0IgPSAwLjE0MTI0MzJcbiJ9 --&gt;
-</code></pre>
-<p>Grid search resulted in the best model for OOB at ntree = 750 and mtry = 7 . OOB = 0.1412432 ```</p>
+cat(&quot;Grid search resulted in the best model at ntree =&quot;,ret$ntree,&quot; and mtry =&quot;,ret$mtry,&quot;.\n&quot;,
+    &quot;Accuracy =&quot;,ret$Accuracy,&quot;\n&quot;,
+    &quot;Balanced Accuracy =&quot;,ret$BalancedAccuracy,&quot;\n&quot;,
+    &quot;Sensitivity =&quot;,ret$Sensitivity,&quot;\n&quot;,
+    &quot;Specificity =&quot;,ret$Specificity)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiR3JpZCBzZWFyY2ggcmVzdWx0ZWQgaW4gdGhlIGJlc3QgbW9kZWwgYXQgbnRyZWUgPSA1MDAgIGFuZCBtdHJ5ID0gNiAuXG4gQWNjdXJhY3kgPSAwLjg3OTEyNTUgXG4gQmFsYW5jZWQgQWNjdXJhY3kgPSAwLjg1ODQzMTcgXG4gU2Vuc2l0aXZpdHkgPSAwLjc3NzMyNzkgXG4gU3BlY2lmaWNpdHkgPSAwLjkzOTUzNTVcbiJ9 -->
+<pre><code>Grid search resulted in the best model at ntree = 500  and mtry = 6 .
+ Accuracy = 0.8791255 
+ Balanced Accuracy = 0.8584317 
+ Sensitivity = 0.7773279 
+ Specificity = 0.9395355</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjoiZGF0YS5mcmFtZSIsIm5yb3ciOjEsIm5jb2wiOjcsInN1bW1hcnkiOnsiRGVzY3JpcHRpb24iOiJkZiBbMSDDlyA3XSJ9fSwicmRmIjoiSDRzSUFBQUFBQUFBQXd0eWlURG1pdUJpWUdCZ1ptQmhaR1JnWmdVeUdWaERROXgwTFJnWVdKaUFIRVlHRmdaT0VGMEJWQ1FNWkxBRE1SOUl3S0c5Z0FFS0lId1pCaFMrL1NFUnh4M0tqdTF3L2h2aHBQVlRGMHZEK2ErenZTVjdjaFBnL0xmL3hGU2lmUzNoL0JjM0d2ajI5bmFnT1lRMUx6RTN0UmpJRUFBN0JpWllVcFNhQ3VXdzVKWVVWVUxaelA3K1RsQW1oMk55Y21sUllqSk1Tc0FwTVNjeEx6azFCVTJjTzdnZ05Ua3pMVE01c3dRaGxKcFhuRm1TV1FZU1FuVU9aMUYrdVI3TVNieGdDUWFRQktxYmszTVNpMkZ1aGdseXBTU1dKT3FsRlFIMUFubi8wTFN3NXhlVVpPYm5BVFV4Z1VLZEZVMHpZeEdhQUg5cEhzZ1ZLYnJKR2FWNTJicUdJQXVncm1GRWNoa3lteDFpSmROL3FGR3NVS1BZVXZQU00vTmdvY21hazVpVW1nUGw4QUY5Qy9hc1hrRlJabDRKekNkQTBXSzlrdnlTUkpnNnJ1VDhISmdJMkc4TS93QWxtcElaYkFJQUFBPT0ifQ== -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["ntree"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["mtry"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["OOB"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Accuracy"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["BalancedAccuracy"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Specificity"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["Sensitivity"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"750","2":"7","3":"0.1412432","4":"0.8773664","5":"0.8568473","6":"0.9372664","7":"0.7764283","_rn_":"9"}],"options":{"columns":{"min":{},"max":[10],"total":[7]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
-  </script>
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 </div>
-<!-- rnb-frame-end -->
+<div id="part-2.1-b" class="section level3">
+<h3>Part 2.1-b</h3>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5kZXggPC0gd2hpY2gubWluKHVubGlzdChkdCRPT0IpKVxucmV0IDwtIGR0W2luZGV4LF1cbmNhdChcIkdyaWQgc2VhcmNoIHJlc3VsdGVkIGluIHRoZSBiZXN0IG1vZGVsIGZvciBPT0IgYXQgbnRyZWUgPVwiLHJldCRudHJlZSxcIiBhbmQgbXRyeSA9XCIscmV0JG10cnksXCIuXFxuXCIsXG4gICBcIk9PQiA9XCIscmV0JE9PQilcbmBgYCJ9 -->
+<pre class="r"><code>index &lt;- which.min(unlist(dt$OOB))
+ret &lt;- dt[index,]
+cat(&quot;Grid search resulted in the best model for OOB at ntree =&quot;,ret$ntree,&quot; and mtry =&quot;,ret$mtry,&quot;.\n&quot;,
+   &quot;OOB =&quot;,ret$OOB)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiR3JpZCBzZWFyY2ggcmVzdWx0ZWQgaW4gdGhlIGJlc3QgbW9kZWwgZm9yIE9PQiBhdCBudHJlZSA9IDc1MCAgYW5kIG10cnkgPSA3IC5cbiBPT0IgPSAwLjE0MTI0MzJcbiJ9 -->
+<pre><code>Grid search resulted in the best model for OOB at ntree = 750  and mtry = 7 .
+ OOB = 0.1412432</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
