@@ -135,7 +135,7 @@ for (size in batch.list) {
 ### 2.1-c-ii
 #### Change. As the batch size becomes larger, the amount of data used for each training becomes smaller, and the 100-step training cannot make the model converge, so the overall accuracy is reduced
 
-### 2.1-d
+### 2.1-d-i && ii
 ```{r}
 create_new_model <- function(){
   model <- keras_model_sequential() %>%
@@ -158,6 +158,7 @@ model %>% fit(
   data.matrix(X_train), 
   y_train.ohe,
   epochs=100,
+  verbose=0,
   batch_size=1,
   validation_split=0.20
 )
@@ -166,8 +167,13 @@ model %>% evaluate(as.matrix(X_test), y_test.ohe)
 pred.prob <- predict(model, as.matrix(X_test))
 pred.class <- apply(pred.prob, 1, function(x) which.max(x)-1)
 cm <- confusionMatrix(as.factor(pred.class), as.factor(y_test))
-cm
+
+str <- ""
+for(n in 1:4){
+  str <- paste0(str, "\nClass ",n,": Sens. = ",round(as.double(cm$byClass[n,"Sensitivity"]),3),", Spec. = ",round(as.double(cm$byClass[n,"Specificity"]),3),", Bal.Acc. = ",round(as.double(cm$byClass[n,"Balanced Accuracy"]),3))
+}
+cat("Batch gradient descent\n","Overall accuarcy:",round(as.double(cm$overall["Accuracy"]),3),str)
 
 ```
 
-
+#### The performance increase
