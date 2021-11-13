@@ -1,5 +1,5 @@
 ---
-  title: "Homework 7"
+title: "Homework 7"
 output: 
   html_notebook:
   toc: yes
@@ -52,17 +52,13 @@ rm(label.train)
 rm(indx)
 
 ```
-# --- Your code goes below ---
-
+### --- Your code goes below ---
+### 2.1-a-i & ii
 ```{r}
-
 create_model <- function(){
   model <- keras_model_sequential() %>%
   layer_dense(units = 8, activation="relu", input_shape=c(3)) %>%
   layer_dense(units = 4, activation="softmax")
-  
-  model # Print the summary of the model.
-
   model %>% 
   compile(loss = "categorical_crossentropy", 
           optimizer="adam", 
@@ -85,6 +81,7 @@ model %>% fit(
   data.matrix(X_train), 
   y_train.ohe,
   epochs=100,
+  verbose=0,
   batch_size=1,
   validation_split=0.20
 )
@@ -92,9 +89,85 @@ model %>% fit(
 model %>% evaluate(as.matrix(X_test), y_test.ohe)
 pred.prob <- predict(model, as.matrix(X_test))
 pred.class <- apply(pred.prob, 1, function(x) which.max(x)-1)
-confusionMatrix(as.factor(pred.class), as.factor(y_test))
+cm <- confusionMatrix(as.factor(pred.class), as.factor(y_test))
+str <- ""
+for(n in 1:4){
+  str <- paste0(str, "\nClass ",n,": Sens. = ",round(as.double(cm$byClass[n,"Sensitivity"]),3),", Spec. = ",round(as.double(cm$byClass[n,"Specificity"]),3),", Bal.Acc. = ",round(as.double(cm$byClass[n,"Balanced Accuracy"]),3))
+}
+cat("Batch gradient descent\n","Overall accuarcy:",round(as.double(cm$overall["Accuracy"]),3),str)
 
 ```
+### 2.1-b
+```{r}
 
+batch.list<- c(1, 32, 64, 128, 256)
+
+for (size in batch.list) {
+  remove(model)
+  model <- NULL
+  model <- create_model()
+  batch.list<- c(1, 32, 64, 128, 256)
+  begin <- Sys.time()
+  model %>% fit(
+    data.matrix(X_train), 
+    y_train.ohe,
+    epochs=100,
+    verbose=0,
+    batch_size=size,
+    validation_split=0.20
+  )
+  end <- Sys.time()
+  
+  model %>% evaluate(as.matrix(X_test), y_test.ohe)
+  pred.prob <- predict(model, as.matrix(X_test))
+  pred.class <- apply(pred.prob, 1, function(x) which.max(x)-1)
+  cm <- confusionMatrix(as.factor(pred.class), as.factor(y_test))
+  str <- ""
+  for(n in 1:4){
+    str <- paste0(str, "\nClass ",n,": Sens. = ",round(as.double(cm$byClass[n,"Sensitivity"]),3),", Spec. = ",round(as.double(cm$byClass[n,"Specificity"]),3),", Bal.Acc. = ",round(as.double(cm$byClass[n,"Balanced Accuracy"]),3))
+  }
+  cat("Batch size: ",size,"\nTime taken to train neural network:",end-begin,"(seconds)\n","Overall accuarcy:",round(as.double(cm$overall["Accuracy"]),3),str)
+}
+```
+
+### 2.1-c-i
+#### As the batch size becomes larger, the amount of data used for each training becomes smaller, and the time used for each training step becomes smaller.
+### 2.1-c-ii
+#### Change. As the batch size becomes larger, the amount of data used for each training becomes smaller, and the 100-step training cannot make the model converge, so the overall accuracy is reduced
+
+### 2.1-d
+```{r}
+create_new_model <- function(){
+  model <- keras_model_sequential() %>%
+  layer_dense(units = 8, activation="relu", input_shape=c(3)) %>%
+  layer_dense(units = 8, activation="relu") %>%
+  layer_dense(units = 4, activation="softmax")
+  
+  model %>% 
+  compile(loss = "categorical_crossentropy", 
+          optimizer="adam", 
+          metrics=c("accuracy"))
+  return(model)
+}
+
+remove(model)
+model <- NULL
+model <- create_new_model()
+
+model %>% fit(
+  data.matrix(X_train), 
+  y_train.ohe,
+  epochs=100,
+  batch_size=1,
+  validation_split=0.20
+)
+
+model %>% evaluate(as.matrix(X_test), y_test.ohe)
+pred.prob <- predict(model, as.matrix(X_test))
+pred.class <- apply(pred.prob, 1, function(x) which.max(x)-1)
+cm <- confusionMatrix(as.factor(pred.class), as.factor(y_test))
+cm
+
+```
 
 
