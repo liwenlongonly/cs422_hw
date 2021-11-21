@@ -101,7 +101,6 @@ cat("Batch gradient descent\n","Overall accuarcy:",round(as.double(cm$overall["A
 ```{r}
 
 batch.list<- c(1, 32, 64, 128, 256)
-
 for (size in batch.list) {
   remove(model)
   model <- NULL
@@ -126,7 +125,7 @@ for (size in batch.list) {
   for(n in 1:4){
     str <- paste0(str, "\nClass ",n,": Sens. = ",round(as.double(cm$byClass[n,"Sensitivity"]),3),", Spec. = ",round(as.double(cm$byClass[n,"Specificity"]),3),", Bal.Acc. = ",round(as.double(cm$byClass[n,"Balanced Accuracy"]),3))
   }
-  cat("Batch size: ",size,"\nTime taken to train neural network:",end-begin,"(seconds)\n","Overall accuarcy:",round(as.double(cm$overall["Accuracy"]),3),str)
+  cat("Batch size: ",size,"\nTime taken to train neural network:",difftime(end, begin, units = "secs"),"(seconds)\n","Overall accuarcy:",round(as.double(cm$overall["Accuracy"]),3),str)
 }
 ```
 

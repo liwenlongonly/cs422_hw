@@ -1,0 +1,132 @@
+---
+title: "Homework 8"
+output: 
+  html_notebook:
+  toc: yes
+  toc_float: yes
+author: Wenlong Li
+---
+### 2.1-a-i
+#### I want to omit "Name" attributes
+### 2.1-a-ii
+#### No standardization is required, their properties are of the same type, and their values are not very different
+### 2.1-a-iii
+```{r}
+library(dplyr)
+rm(list=ls())
+
+# Set working directory as needed
+setwd("./")
+con <- file("./file19.txt", "r")
+line=readLines(con,n=1)
+isAddTable = FALSE
+table <- matrix(nrow = 0, ncol = 9)
+while( length(line) != 0 ) {
+     if(grepl(pattern = "Name",x = line) && !grepl(pattern = "#",x = line)){
+       isAddTable = TRUE
+     }
+     if(isAddTable){
+       line <- gsub('\"',"",line)
+       str <- ""
+       for(item in unlist(strsplit(line,split = " "))){
+         if(nchar(item) > 1 && !grepl(pattern = " ",x = item)){
+           splictStr <- ""
+           if(nchar(str)>0){
+             splictStr <- " "
+           }
+           str <- paste0(str,splictStr,item)
+         }else if(nchar(item) == 1 && !grepl(pattern = " ",x = item)){
+           str <- paste0(str,",",item)
+         }
+       }
+       if(grepl(pattern = "Name",x = line)){
+         colnames(table) <- unlist(strsplit(str,split = ","))
+       }else{
+         table <- rbind(table, unlist(strsplit(str,split = ",")))
+       }
+     }
+     line=readLines(con,n=1)
+}
+close(con)
+df <- data.frame(table)
+# 转换数据类型
+for(item in colnames(table)){
+  if(!grepl(pattern = "Name",x = item)){
+    df[item] = as.integer(unlist(df[item]))
+  }
+}
+write.table(df, "./dfile.txt", row.names = FALSE, col.names = TRUE, sep = ",")
+```
+### 2.1-b-i
+```{r}
+library(cluster)
+library(factoextra)
+fviz_nbclust(select(df, -Name), kmeans, method="wss")
+```
+#### k = 3
+### 2.1-b-ii
+```{r}
+k <- kmeans(select(df, -Name), centers=8, nstart=25)  
+fviz_cluster(k, data=select(df, -Name))
+```
+### 2.1-b-iii
+#### K-means clustering with 8 clusters of sizes 8, 11, 10, 1, 2, 8, 17, 9
+### 2.1-b-iv
+#### The total SSE of the clusters is 62.065983
+### 2.1-b-v
+#### Within cluster sum of squares by cluster:3.875000  5.454545 21.100000  0.000000  3.000000  6.375000 20.705882  1.555556
+### 2.1.b-vi
+```{r}
+for (n in 1:8) {
+  print(select(df,Name)[which(k$cluster == n),]) 
+}
+```
+#### Most classifications are reasonable, each cluster is the same type of animals, but some classifications are not accurate
+
+### 2.2-a
+```{r}
+remove(df)
+df <- read.csv("./s1.csv")
+```
+
+#### Standardization is not required, and x and y are basically at the same level
+### 2.2-b-i
+```{r}
+plot(df)
+```
+### 2.2-b-ii
+#### From the figure, you can see 15 groups, not completely separated, several groups are connected
+
+### 2.2-c-i
+```{r}
+fviz_nbclust(df, kmeans, method="wss")
+```
+#### The optimal number of clusters is 7
+### 2.2-c-ii
+```{r}
+fviz_nbclust(df, kmeans, method="silhouette")
+```
+#### #### The optimal number of clusters is 8
+### 2.2-c-iii
+#### The optimal number of clusters is 8
+### 2.2-d-i
+```{r}
+k <- kmeans(df, centers=8, nstart=25)
+fviz_cluster(k, data=df)
+```
+### 2.2-d-ii
+#### Clustering works poorly, merging some similar clusters
+### 2.2-e-i
+#### The value of MinPts is 4. Original dbscan used minPts = 4; suffices for 2 dimensions
+### 2.2-e-ii
+```{r}
+library(dbscan)
+dbscan::kNNdistplot(df, k =  4)
+abline(h = 20000, lty = 2)
+
+db <- fpc::dbscan(df, eps = 20000, MinPts = 4)
+fviz_cluster(db, df, stand = FALSE, ellipse = F, geom = "point")
+print(db)
+```
+
+
