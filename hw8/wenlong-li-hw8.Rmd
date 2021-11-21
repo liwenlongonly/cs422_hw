@@ -126,7 +126,7 @@ abline(h = 20000, lty = 2)
 
 db <- fpc::dbscan(df, eps = 20000, MinPts = 4)
 fviz_cluster(db, df, stand = FALSE, ellipse = F, geom = "point")
-print(db)
+print("At minPts = 4, eps = 20000, there are 20 clusters.")
 ```
 
 
