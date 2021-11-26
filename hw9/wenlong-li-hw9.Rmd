@@ -1,0 +1,41 @@
+---
+title: "Homework 9"
+output: 
+  html_notebook:
+  toc: yes
+  toc_float: yes
+author: Wenlong Li
+---
+
+### 2.1-a-iii
+```{r}
+library(dplyr)
+rm(list=ls())
+
+# Set working directory as needed
+setwd("./")
+df <- read.csv("products.csv",sep = ',',header = F)
+print(df)
+
+tr_1k <- file("tr-1k.csv", "r")
+line=readLines(tr_1k,n=1)
+while(length(line) != 0 ) {
+  index = 1
+  str <- ""
+  for(item in unlist(strsplit(line,split = ","))){
+    if(index > 1){
+      splitStr = ""
+      if(nchar(str)!=0){
+        splitStr = ","
+      }
+      str <- paste0(str, splitStr, df[as.integer(item),2])
+    }
+    index <- index+1
+  }
+  print(str)
+  line=readLines(tr_1k,n=1)
+}
+close(tr_1k)
+
+#write.table(df, "./dfile.txt", row.names = FALSE, col.names = TRUE, sep = ",")
+```
