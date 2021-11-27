@@ -7,7 +7,7 @@ output:
 author: Wenlong Li
 ---
 
-### 2.1-a-iii
+### 2.1-a
 ```{r}
 library(dplyr)
 rm(list=ls())
@@ -15,27 +15,42 @@ rm(list=ls())
 # Set working directory as needed
 setwd("./")
 df <- read.csv("products.csv",sep = ',',header = F)
-print(df)
+df
 
-tr_1k <- file("tr-1k.csv", "r")
-line=readLines(tr_1k,n=1)
-while(length(line) != 0 ) {
-  index = 1
-  str <- ""
-  for(item in unlist(strsplit(line,split = ","))){
-    if(index > 1){
-      splitStr = ""
-      if(nchar(str)!=0){
-        splitStr = ","
+canonical_conversion <- function(originFilePath, canonicalFilePath, df){
+  tr_k <- file(originFilePath, "r")
+  tr_k_canonical <- file(canonicalFilePath, "w")
+  line=readLines(tr_k,n=1)
+  while(length(line) != 0 ) {
+    index = 1
+    str <- ""
+    for(item in unlist(strsplit(line,split = ","))){
+      if(index > 1){
+        splitStr = ""
+        if(nchar(str)!=0){
+          splitStr = ","
+        }
+        str <- paste0(str, splitStr, df[as.integer(item)+1,2])
       }
-      str <- paste0(str, splitStr, df[as.integer(item),2])
+      index <- index+1
     }
-    index <- index+1
+    writeLines(text = str, con = tr_k_canonical)
+    line=readLines(tr_k,n=1)
   }
-  print(str)
-  line=readLines(tr_1k,n=1)
+  close(tr_k)
+  close(tr_k_canonical)
 }
-close(tr_1k)
 
-#write.table(df, "./dfile.txt", row.names = FALSE, col.names = TRUE, sep = ",")
+tr_list <- c("tr-1k.csv","tr-5k.csv","tr-20k.csv", "tr-75k.csv");
+tr_canonical_list <- c("tr-1k-canonical.csv","tr-5k-canonical.csv","tr-20k-canonical.csv", "tr-75k-canonical.csv");
+
+for (item in 1:length(tr_list)) {
+  canonical_conversion(tr_list[item], tr_canonical_list[item], df)
+}
+
 ```
+### 2.1-b
+```{r}
+
+```
+
