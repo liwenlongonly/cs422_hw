@@ -105,4 +105,63 @@ rm(trans)
 #### {Apple Croissant, Apple Danish, Apple Tart}
 
 ### 2.2
+```{r}
+library(dplyr)
+setwd("./")
+
+user.id <- 20475195 %% 671
+
+ratings.df <- read.csv('./ml-latest-small/ratings.csv')
+movies.df <- read.csv('./ml-latest-small/movies.csv')
+
+user.id.df <- filter(ratings.df, ratings.df$userId == user.id)
+
+user.movieid.df <- filter(movies.df, movies.df$movieId %in% user.id.df$movieId)
+
+genresList <- c("Action", "Adventure", "Animation", "Children", "Comedy", "Crime", "Documentary", "Drama", "Fantasy", "Film-Noir", "Horror", "IMAX", "Musical", "Mystery", "Romance", "Sci-Fi", "Thriller", "War", "Western", "(no genres listed)")
+
+create_movie_profile <- function(df, genresList){
+  result <- matrix(nrow = 0, ncol = 20)
+  colnames(result) <- genresList
+  names <- matrix(nrow = 0, ncol = 2)
+  colnames(names) <- c("MovieId","MovieName")
+  for (item in 1:nrow(df)) {
+    genres <- df[item,"genres"]
+    genresValue <- c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
+    for(genre in unlist(strsplit(genres,split = '|',fixed= T))){
+      genresValue[which(genresList == genre)] = 1
+    }
+    names <- rbind(names, c(df[item,"movieId"], df[item,"title"]))
+    result <- rbind(result, as.integer(genresValue))
+  }
+  return(data.frame(names, result))
+}
+
+create_user_profile <- function(user.movieid.df, genresList){
+  df <- create_movie_profile(user.movieid.df, genresList)
+  y <- select(df, -MovieId, -MovieName)
+  return(data.frame(t(colMeans(y))))
+}
+
+my_cosine <- function(x, y){
+  cosine <- sum(x*y)/(norm(x, type = "2")*norm(y, type = "2"))
+  return(cosine)
+}
+
+user.profile <- create_user_profile(user.movieid.df, genresList)
+
+random.movies <- movies.df[sample(nrow(movies.df), 10), ]
+random.movies <- create_movie_profile(random.movies, genresList)
+random.movies$Similarity <- c(0.0)
+
+for (row in 1:nrow(random.movies)) {
+   movies.profile <- select(random.movies, -MovieId, -MovieName, -Similarity)[row,]
+   random.movies[row,]$Similarity = my_cosine(movies.profile, user.profile)
+}
+random.movies <- random.movies[order(random.movies$Similarity, decreasing=TRUE),]
+
+print(select(random.movies, MovieId, MovieName, Similarity)[1:5,])
+rm(ratings.df)
+rm(movies.df)
+```
 
