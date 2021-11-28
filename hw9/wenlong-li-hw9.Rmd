@@ -15,7 +15,6 @@ rm(list=ls())
 # Set working directory as needed
 setwd("./")
 df <- read.csv("products.csv",sep = ',',header = F)
-df
 
 canonical_conversion <- function(originFilePath, canonicalFilePath, df){
   tr_k <- file(originFilePath, "r")
@@ -41,16 +40,69 @@ canonical_conversion <- function(originFilePath, canonicalFilePath, df){
   close(tr_k_canonical)
 }
 
+
 tr_list <- c("tr-1k.csv","tr-5k.csv","tr-20k.csv", "tr-75k.csv");
 tr_canonical_list <- c("tr-1k-canonical.csv","tr-5k-canonical.csv","tr-20k-canonical.csv", "tr-75k-canonical.csv");
 
 for (item in 1:length(tr_list)) {
   canonical_conversion(tr_list[item], tr_canonical_list[item], df)
 }
-
+rm(df)
 ```
 ### 2.1-b
 ```{r}
+library(arules)
 
+# tr-1k-canonical.csv
+print("excel tr-1k-canonical")
+trans <- read.transactions("tr-1k-canonical.csv", sep=",")
+f_is <- apriori(trans, parameter=list(support=0.025, target="frequent itemsets"))
+inspect(sort(f_is, decreasing = T, by="count"))
+rm(f_is)
+rules <- apriori(trans, parameter = list(support=0.025, confidence=0.9))
+inspect(sort(rules, decreasing = T, by="confidence"))
+rm(rules)
+rm(trans)
+
+# tr-5k-canonical.csv
+print("excel tr-5-canonical")
+trans <- read.transactions("tr-5k-canonical.csv", sep=",")
+f_is <- apriori(trans, parameter=list(support=0.025, target="frequent itemsets"))
+inspect(sort(f_is, decreasing = T, by="count"))
+rm(f_is)
+rules <- apriori(trans, parameter = list(support=0.025, confidence=0.9))
+inspect(sort(rules, decreasing = T, by="count"))
+rm(rules)
+rm(trans)
+
+# tr-20k-canonical.csv
+print("excel tr-20-canonical")
+trans <- read.transactions("tr-20k-canonical.csv", sep=",")
+f_is <- apriori(trans, parameter=list(support=0.025, target="frequent itemsets"))
+inspect(sort(f_is, decreasing = T, by="count"))
+rm(f_is)
+rules <- apriori(trans, parameter = list(support=0.025, confidence=0.9))
+inspect(sort(rules, decreasing = T, by="count"))
+rm(rules)
+rm(trans)
+
+# tr-75k-canonical.csv
+print("excel tr-75-canonical")
+trans <- read.transactions("tr-75k-canonical.csv", sep=",")
+f_is <- apriori(trans, parameter=list(support=0.025, target="frequent itemsets"))
+inspect(sort(f_is, decreasing = T, by="count"))
+rm(f_is)
+rules <- apriori(trans, parameter = list(support=0.025, confidence=0.9))
+inspect(sort(rules, decreasing = T, by="count"))
+rm(rules)
+rm(trans)
 ```
+### 2.1-c
+#### The greater the amount of transaction data, the more accurate the association rules mined, and the more practical meaning
+### 2.1-d-i
+#### Coffee Eclair
+### 2.1-d-ii
+#### {Apple Croissant, Apple Danish, Apple Tart}
+
+### 2.2
 
